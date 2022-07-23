@@ -1,18 +1,10 @@
 /* PROYECTO VIAJARGENTINA 
 Es una página que se basa en las interacción con el usuario para conocer la Argentina. Es una página turística/informativa. 
--Se solicita al usuario: nombre, apellido, edad, si desea viajar con su familia o si tiene, cuantos niños tiene, interés del viaje 
-(Viaje para hacer caminatas, concer naturaleza, visitar lugares en ciudades, si es un retiro espiritual).  
-- Se puede suscribir para lo cual se llena un formulario y con ello obtendría beneficios (nombre apellido, contraseña).
-*/
-
-/* PRIMER DESAFIO: SIMULADOR 
-Se hará que el usuario ingrese adonde está interesado en ir, luego coloque sobre el/ella o de si va acompañada(pedir numero de integrantes)
-, preguntar el motivo del viaje, intereses y finalmente que se de la respuesta de cómo llegar (avion-colectivo-auto), posibles hospedajes-restaurantes, 
-y según los intereses se indica que se puede hacer. 
+Se puede suscribir para lo cual se llena un formulario y con ello obtendría beneficios (nombre apellido, contraseña).
 */
 
 // Bienvenida a la página //
-
+ 
 function bienvenida (nombre, apellido){
 
     if (nombre != "" && apellido != ""){
@@ -44,7 +36,7 @@ if (msj){
 
 }
     
-// Funcion para solicitar datos para dar posibles lugares a visitar (primeras opciones de Bariloche o El Bolsón//
+// Funcion para solicitar datos para dar posibles lugares a visitar (primeras opciones de Bariloche o El Bolsón)//
 
 function solicitud_lugar(localidad, interes, temporada){
 
@@ -94,6 +86,67 @@ function solicitud_lugar(localidad, interes, temporada){
 
 }
 
+//Presupuestos
+
+const estadiaBar = 15000;
+const viajeBar = 20000;
+const actividadBarInv = 50000; // Actividad de esqui para naturaleza-invierno
+const actividadBarInv2 = 40000; // Actividad de spa para ciudad-invierno
+const actividadBarVer = 20000; // Actividad de barco para naturaleza-verano
+const actividadBarVer2 = 25000; // Actividad de complejo verano para ciudad-verano
+
+const estadiaBol = 10000; 
+const viajeBol = 20000;
+const actividadBolInv = 60000; // Actividad de snowboard cerca para naturaleza-invierno
+const actividadBolInv2 = 50000; // Actividad de complejo spa cerca para ciudad-invierno
+const actividadBolVer = 15000; // Actividad de refugios para naturaleza-verano
+const actividadBolVer2 = 15000; // Actividad de tour para ciudad-verano
+
+
+// Funciones de presupuestos
+
+function presupuestoBarilocheInv (estadiaBar, viajeBar, actividadBarInv){
+
+    return "Presupuesto:\n-Estadía= $" + estadiaBar + "\n-Viaje a Bariloche= $" + viajeBar + "\n-Actividad invierno (Esquí)= $" + actividadBarInv + "\nTOTAL (x persona x día)= $" +  (estadiaBar + viajeBar + actividadBarInv);
+}
+
+function presupuestoBarilocheInv2 (estadiaBar, viajeBar, actividadBarInv2){
+
+    return "Presupuesto:\n-Estadía= $" + estadiaBar + "\n-Viaje a Bariloche= $" + viajeBar + "\n-Actividad invierno (Spa)= $" + actividadBarInv2 + "\nTOTAL (x persona x día)= $" +  (estadiaBar + viajeBar + actividadBarInv2);
+}
+
+function presupuestoBarilocheVer (estadiaBar, viajeBar, actividadBarVer){
+
+    return "Presupuesto:\n-Estadía= $" + estadiaBar + "\n-Viaje a Bariloche= $" + viajeBar + "\n-Actividad invierno (Paseo en barco)= $" + actividadBarVer + "\nTOTAL (x persona x día)= $" +  (estadiaBar + viajeBar + actividadBarVer);
+}
+
+function presupuestoBarilocheVer2 (estadiaBar, viajeBar, actividadBarVer2){
+
+    return "Presupuesto:\n-Estadía= $" + estadiaBar + "\n-Viaje a Bariloche= $" + viajeBar + "\n-Actividad invierno (Complejo verano)= $" + actividadBarVer2 + "\nTOTAL (x persona x día)= $" +  (estadiaBar + viajeBar + actividadBarVer2);
+}
+
+function presupuestoBolsonInv (estadiaBol, viajeBol, actividadBolInv){
+
+    return "Presupuesto:\n-Estadía= $" + estadiaBol + "\n-Viaje a Bariloche= $" + viajeBol + "\n-Actividad invierno (snowboard cerca)= $" + actividadBolInv + "\nTOTAL (x persona x día)= $" +  (estadiaBol + viajeBol + actividadBolInv);
+}
+
+function presupuestoBolsonVer (estadiaBol, viajeBol, actividadBolVer){
+
+    return "Presupuesto:\n-Estadía= $" + estadiaBol + "\n-Viaje a Bariloche= $" + viajeBol + "\n-Actividad invierno (Refugios)= $" + actividadBolVer + "\nTOTAL (x persona x día)= $" +  (estadiaBol + viajeBol + actividadBolVer);
+}
+
+function presupuestoBolsonInv2 (estadiaBol, viajeBol, actividadBolInv2){
+
+    return "Presupuesto:\n-Estadía= $" + estadiaBol + "\n-Viaje a Bariloche= $" + viajeBol + "\n-Actividad invierno (complejo spa)= $" + actividadBolInv2 + "\nTOTAL (x persona x día)= $" +  (estadiaBol + viajeBol + actividadBolInv2);
+}
+
+function presupuestoBolsonVer2 (estadiaBol, viajeBol, actividadBolVer2){
+
+    return "Presupuesto:\n-Estadía= $" + estadiaBol + "\n-Viaje a Bariloche= $" + viajeBol + "\n-Actividad invierno (tour)= $" + actividadBolVer2 + "\nTOTAL (x persona x día)= $" +  (estadiaBol + viajeBol + actividadBolVer2);
+}
+
+// Código para solicitar localidad y dar presupuestos
+
 let msj2 = confirm("¿Quieres conocer Argentina?");
 
 while (msj2 == false){
@@ -107,20 +160,36 @@ if (msj2){
     let interes = prompt ("¿Qué prefiere/n: NATURALEZA ó CIUDAD?");
     let temporada = prompt ("¿Qué temporada prefiere/n: INVIERNO ó VERANO?");
     solicitud_lugar(localidad, interes, temporada);
+
     if ((localidad != "" && (localidad == "BARILOCHE" || localidad == "EL BOLSON")) && (interes != "" && (interes == "NATURALEZA" || interes == "CIUDAD")) && (localidad != "" && (temporada == "INVIERNO" || temporada == "VERANO"))){
         alert ("HAS ESCOGIDO VIAJAR A " + localidad + " PARA CONOCER LA " + interes + " EN TEMPORADA DE " + temporada + " .");
+        if (localidad == "BARILOCHE" && interes == "NATURALEZA" && temporada == "INVIERNO"){
+            alert (presupuestoBarilocheInv(estadiaBar, viajeBar, actividadBarInv));
+        }else if (localidad == "BARILOCHE" && interes == "NATURALEZA" && temporada == "VERANO"){
+            alert (presupuestoBarilocheVer(estadiaBar, viajeBar, actividadBarVer));
+        }else if (localidad == "BARILOCHE" && interes == "CIUDAD" && temporada == "INVIERNO"){
+            alert (presupuestoBarilocheInv2(estadiaBar, viajeBar, actividadBarInv2));
+        }else if (localidad == "BARILOCHE" && interes == "CIUDAD" && temporada == "VERANO"){
+            alert (presupuestoBarilocheVer2(estadiaBar, viajeBar, actividadBarVer2));
+        }else if (localidad == "EL BOLSON" && interes == "NATURALEZA" && temporada == "INVIERNO"){
+            alert (presupuestoBarilocheInv(estadiaBol, viajeBol, actividadBolInv));
+        }else if (localidad == "EL BOLSON" && interes == "NATURALEZA" && temporada == "VERANO"){
+            alert (presupuestoBarilocheVer(estadiaBol, viajeBol, actividadBolVer));
+        }else if (localidad == "EL BOLSON" && interes == "CIUDAD" && temporada == "INVIERNO"){
+            alert (presupuestoBarilocheInv2(estadiaBol, viajeBol, actividadBolInv2));
+        }else if (localidad == "EL BOLSON" && interes == "CIUDAD" && temporada == "VERANO"){
+            alert (presupuestoBarilocheVer2(estadiaBol, viajeBol, actividadBolVer2));
+        }
     }else{
-       
+
         alert ("Has ingresa los datos erróneamente.")
 
     }
 }
 
-
-
 // Función para pedir datos //
 
-function datos_usuario(){
+/* function datos_usuario(){
     
     let nombre = prompt("Ingrese el nombre del o la integrante");
     let apellido = prompt("Ingrese el apellido del o la integrante");
@@ -133,7 +202,7 @@ function datos_usuario(){
         alert("Los datos ingresados no son correctos.");
     }
 }
-
+ */
 
 
 
