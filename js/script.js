@@ -5,11 +5,11 @@ Se puede suscribir para lo cual se llena un formulario y con ello obtendría ben
 
 // Bienvenida a la página //
  
-function bienvenida (nombre, apellido){
+function bienvenida (nombre){
 
-    if (nombre != "" && apellido != ""){
+    if (nombre != ""){
         
-        alert ("Bienvenido/a " + nombre + " " + apellido + " a ViajArgentina");
+        alert ("BIENVENIDO/A " + nombre + " A VIAJARGENTINA");
     
     }else{
         
@@ -29,14 +29,13 @@ while (msj == false){
 
 if (msj){ 
 
-    let nombre = prompt("Ingrese su nombre");
-    let apellido = prompt ("Ingrese su apellido");
+    let nombre = prompt("Ingrese su nombre").toUpperCase();
     
-    bienvenida(nombre, apellido);
+    bienvenida(nombre);
 
 }
     
-// Funcion para solicitar datos para dar posibles lugares a visitar (primeras opciones de Bariloche o El Bolsón)//
+// Funcion para solicitar datos para dar posibles lugares a visitar (primeras opciones de Bariloche o El Bolsón)
 
 function solicitud_lugar(localidad, interes, temporada){
 
@@ -86,65 +85,6 @@ function solicitud_lugar(localidad, interes, temporada){
 
 }
 
-//Presupuestos
-
-const estadiaBar = 15000;
-const viajeBar = 20000;
-const actividadBarInv = 50000; // Actividad de esqui para naturaleza-invierno
-const actividadBarInv2 = 40000; // Actividad de spa para ciudad-invierno
-const actividadBarVer = 20000; // Actividad de barco para naturaleza-verano
-const actividadBarVer2 = 25000; // Actividad de complejo verano para ciudad-verano
-
-const estadiaBol = 10000; 
-const viajeBol = 20000;
-const actividadBolInv = 60000; // Actividad de snowboard cerca para naturaleza-invierno
-const actividadBolInv2 = 50000; // Actividad de complejo spa cerca para ciudad-invierno
-const actividadBolVer = 15000; // Actividad de refugios para naturaleza-verano
-const actividadBolVer2 = 15000; // Actividad de tour para ciudad-verano
-
-
-// Funciones de presupuestos
-
-function presupuestoBarilocheInv (estadiaBar, viajeBar, actividadBarInv){
-
-    return "Presupuesto:\n-Estadía= $" + estadiaBar + "\n-Viaje a Bariloche= $" + viajeBar + "\n-Actividad invierno (Esquí)= $" + actividadBarInv + "\nTOTAL (x persona x día)= $" +  (estadiaBar + viajeBar + actividadBarInv);
-}
-
-function presupuestoBarilocheInv2 (estadiaBar, viajeBar, actividadBarInv2){
-
-    return "Presupuesto:\n-Estadía= $" + estadiaBar + "\n-Viaje a Bariloche= $" + viajeBar + "\n-Actividad invierno (Spa)= $" + actividadBarInv2 + "\nTOTAL (x persona x día)= $" +  (estadiaBar + viajeBar + actividadBarInv2);
-}
-
-function presupuestoBarilocheVer (estadiaBar, viajeBar, actividadBarVer){
-
-    return "Presupuesto:\n-Estadía= $" + estadiaBar + "\n-Viaje a Bariloche= $" + viajeBar + "\n-Actividad invierno (Paseo en barco)= $" + actividadBarVer + "\nTOTAL (x persona x día)= $" +  (estadiaBar + viajeBar + actividadBarVer);
-}
-
-function presupuestoBarilocheVer2 (estadiaBar, viajeBar, actividadBarVer2){
-
-    return "Presupuesto:\n-Estadía= $" + estadiaBar + "\n-Viaje a Bariloche= $" + viajeBar + "\n-Actividad invierno (Complejo verano)= $" + actividadBarVer2 + "\nTOTAL (x persona x día)= $" +  (estadiaBar + viajeBar + actividadBarVer2);
-}
-
-function presupuestoBolsonInv (estadiaBol, viajeBol, actividadBolInv){
-
-    return "Presupuesto:\n-Estadía= $" + estadiaBol + "\n-Viaje a Bariloche= $" + viajeBol + "\n-Actividad invierno (snowboard cerca)= $" + actividadBolInv + "\nTOTAL (x persona x día)= $" +  (estadiaBol + viajeBol + actividadBolInv);
-}
-
-function presupuestoBolsonVer (estadiaBol, viajeBol, actividadBolVer){
-
-    return "Presupuesto:\n-Estadía= $" + estadiaBol + "\n-Viaje a Bariloche= $" + viajeBol + "\n-Actividad invierno (Refugios)= $" + actividadBolVer + "\nTOTAL (x persona x día)= $" +  (estadiaBol + viajeBol + actividadBolVer);
-}
-
-function presupuestoBolsonInv2 (estadiaBol, viajeBol, actividadBolInv2){
-
-    return "Presupuesto:\n-Estadía= $" + estadiaBol + "\n-Viaje a Bariloche= $" + viajeBol + "\n-Actividad invierno (complejo spa)= $" + actividadBolInv2 + "\nTOTAL (x persona x día)= $" +  (estadiaBol + viajeBol + actividadBolInv2);
-}
-
-function presupuestoBolsonVer2 (estadiaBol, viajeBol, actividadBolVer2){
-
-    return "Presupuesto:\n-Estadía= $" + estadiaBol + "\n-Viaje a Bariloche= $" + viajeBol + "\n-Actividad invierno (tour)= $" + actividadBolVer2 + "\nTOTAL (x persona x día)= $" +  (estadiaBol + viajeBol + actividadBolVer2);
-}
-
 // Código para solicitar localidad y dar presupuestos
 
 let msj2 = confirm("¿Quieres conocer Argentina?");
@@ -156,36 +96,59 @@ while (msj2 == false){
 
 if (msj2){
 
-    let localidad = prompt ("¿Qué lugar quiere/n conocer? BARILOCHE ó EL BOLSON");
-    let interes = prompt ("¿Qué prefiere/n: NATURALEZA ó CIUDAD?");
-    let temporada = prompt ("¿Qué temporada prefiere/n: INVIERNO ó VERANO?");
+    let localidad = prompt ("¿Qué lugar quiere/n conocer? Bariloche ó El Bolsón").toUpperCase();
+    let interes = prompt ("¿Qué prefiere/n: naturaleza ó ciudad?").toUpperCase();
+    let temporada = prompt ("¿Qué temporada prefiere/n: invierno ó verano?").toUpperCase();
     solicitud_lugar(localidad, interes, temporada);
 
     if ((localidad != "" && (localidad == "BARILOCHE" || localidad == "EL BOLSON")) && (interes != "" && (interes == "NATURALEZA" || interes == "CIUDAD")) && (localidad != "" && (temporada == "INVIERNO" || temporada == "VERANO"))){
         alert ("HAS ESCOGIDO VIAJAR A " + localidad + " PARA CONOCER LA " + interes + " EN TEMPORADA DE " + temporada + " .");
         if (localidad == "BARILOCHE" && interes == "NATURALEZA" && temporada == "INVIERNO"){
-            alert (presupuestoBarilocheInv(estadiaBar, viajeBar, actividadBarInv));
+            alert (paquete1.descripcionPaquete());
+            alert (paquete1.precioPaquete());
         }else if (localidad == "BARILOCHE" && interes == "NATURALEZA" && temporada == "VERANO"){
-            alert (presupuestoBarilocheVer(estadiaBar, viajeBar, actividadBarVer));
+            alert (paquete3.descripcionPaquete());
+            alert (paquete3.precioPaquete());
         }else if (localidad == "BARILOCHE" && interes == "CIUDAD" && temporada == "INVIERNO"){
-            alert (presupuestoBarilocheInv2(estadiaBar, viajeBar, actividadBarInv2));
+            alert (paquete2.descripcionPaquete());
+            alert (paquete2.precioPaquete());
         }else if (localidad == "BARILOCHE" && interes == "CIUDAD" && temporada == "VERANO"){
-            alert (presupuestoBarilocheVer2(estadiaBar, viajeBar, actividadBarVer2));
+            alert (paquete4.descripcionPaquete());
+            alert (paquete4.precioPaquete());
         }else if (localidad == "EL BOLSON" && interes == "NATURALEZA" && temporada == "INVIERNO"){
-            alert (presupuestoBarilocheInv(estadiaBol, viajeBol, actividadBolInv));
+            alert (paquete5.descripcionPaquete());
+            alert (paquete5.precioPaquete());
         }else if (localidad == "EL BOLSON" && interes == "NATURALEZA" && temporada == "VERANO"){
-            alert (presupuestoBarilocheVer(estadiaBol, viajeBol, actividadBolVer));
+            alert (paquete7.descripcionPaquete());
+            alert (paquete7.precioPaquete());
         }else if (localidad == "EL BOLSON" && interes == "CIUDAD" && temporada == "INVIERNO"){
-            alert (presupuestoBarilocheInv2(estadiaBol, viajeBol, actividadBolInv2));
+            alert (paquete6.descripcionPaquete());
+            alert (paquete6.precioPaquete());
         }else if (localidad == "EL BOLSON" && interes == "CIUDAD" && temporada == "VERANO"){
-            alert (presupuestoBarilocheVer2(estadiaBol, viajeBol, actividadBolVer2));
+            alert (paquete8.descripcionPaquete());
+            alert (paquete8.precioPaquete());
         }
     }else{
 
         alert ("Has ingresa los datos erróneamente.")
 
     }
+} 
+
+// Arreglo de objetos de ciudades
+
+const arreglo_nombre = ["Chubut--Puerto Madryn: Esta ciudad es de gran interés turistico por el hermoso paisaje del mar y la visita de las ballenas", "Neuquén--Caviahue-Copahue: Estas ciudades se encuentras cercanas y son especiales para pasear y dirigirse a complejos de aguas calientes", "Río Negro--Viedma: Esta ciudad es la capital de la provincia y tiene un balneario a pocos km para disfrutarlo", "Santa Cruz--El Calafate: Esta ciudad puede ser disfrutada en familia", "Tierra del Fuego--Usuahia: Esta ciudad es la más austral del mundo, en donde se puede apreciar la naturaleza"]
+
+let msj3 = confirm ("Ahora que conocés nuetsra página, ¿quieres conocer otras posibilidades?");
+
+if (msj3){
+    
+    alert("Te mostramos que otras posibilidades tenés para conocer de la Patagonia\n\n" + arreglo_nombre.join ("\n\n"));
+
+}else{
+    alert("Que lástima, será la próxima");
 }
+
 
 // Función para pedir datos //
 
