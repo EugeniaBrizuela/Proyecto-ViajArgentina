@@ -185,7 +185,7 @@ if (msj2){
 
 // Código de cambio de presupuesto y las opciones disponibles para Bariloche y El Bolsón
 
-let msj6 = confirm("¿Ahora que has escogido tus preferencias y te hemos dado un posible paquete sin descuento por ser miembro de la comunidad (Bariloche o El Bolsón), quiéres ver las posibilidades de los precios con descuentos de Bariloche y el Bolsón?");
+let msj6 = confirm("¿Ahora que has escogido tus preferencias y te hemos dado un posible paquete sin descuento por no ser miembro de la comunidad (Bariloche o El Bolsón), quiéres ver las posibilidades de los precios con descuentos de Bariloche y el Bolsón?");
 
 const precioActualizado = arreglo_paquete.map((el)=>{
     return {
@@ -211,7 +211,7 @@ if (msj6){
     alert("Si te han convencido alguno de estos paquetes, contactanos para hacerte miembro y obtener estos descuentos increíbles!!");
 
     //Con lo que se aprenda luego, se puede colocar una especie de formulario para que se envíe al administrador y que tenga los beneficios de estos descuentos.
-    
+
 }else{
     alert("Qué lástima, será la próxima");
 }   
