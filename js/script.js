@@ -208,6 +208,9 @@ if (msj6){
     precioActualizado.forEach((el)=>{
         alert("Los descuentos posibles son:\n\n" +"Opción: " + el.id + "\n\nLocalidad:" + el.localidad + "\nProvincia:" + el.provincia + "\nTemporada:" + el.temporada + "\nEstadía:" + el.estadia + "\nViaje:" + el.viaje + "\nActividad:" + el.actividad + "\nTOTAL CON DESCUENTO (por persona por día): $"+ el.precioTotal);
     });
+    alert("Si te han convencido alguno de estos paquetes, contactanos para hacerte miembro y obtener estos descuentos increíbles!!");
+
+    //Con lo que se aprenda luego, se puede colocar una especie de formulario para que se envíe al administrador y que tenga los beneficios de estos descuentos.
     
 }else{
     alert("Qué lástima, será la próxima");
