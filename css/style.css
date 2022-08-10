@@ -83,20 +83,51 @@ h1{
     text-align: center;
 }
 
-.main__button{
+h2{
+    font-size: 40px;
+    color: #5A5A5A;
     font-weight: bold;
-    background-color: #e8f9a979;
+    text-align: center;
+}
+
+
+.downarrow{
+    color: #5A5A5A;
+    background-color:#deff6779 ;
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    bottom: 10px;
+    right: 40px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 5px;
+    transition: 0.6s;
+
+}
+
+.downarrow:hover{
+    box-shadow: 0px 0px 10px #413807;
+}
+
+.main__button{
+    background-color: #deff6779;
     border-color:#7C6A0A;
     border-style: solid;
     border-width: 2px;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 30px;
+    padding: 6px; 
+    font-size: 25px;
+    font-family: 'Poiret One', cursive;
     color: #5A5A5A;
     text-align: center;
     margin-left: 600px;
-    margin-right: 600px;
-    margin-top: 350px;
+    margin-right: 450px;
+    margin-top: 50px;
+    margin-bottom: 5px;
+}
+
+.borderColor {
+    box-shadow:#E7F9A9 ;
 }
 
 footer{

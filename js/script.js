@@ -19,56 +19,6 @@ function bienvenida (nombre){
     }        
 }
 
-// Funcion para solicitar datos para dar posibles lugares a visitar (primeras opciones de Bariloche o El Bolsón)
- 
-function solicitud_lugar(localidad, interes, temporada){
-
-    switch (localidad){
-        case "BARILOCHE":
-            console.log("Has seleccionado Bariloche");
-            break;
-        case "EL BOLSON":
-            console.log("Has seleccionado El Bolsón");
-            break;
-        case "":
-            console.log("No has ingresado nada");
-            break;
-        default:
-            alert("La opción localidad ingresada no es válida");
-    }    
-
-    switch (interes){
-        case "NATURALEZA":
-            console.log("Has seleccionado naturaleza");
-            break;
-        case "CIUDAD":
-            console.log("Has seleccionado ciudad");
-            break;
-        case "":
-            console.log("No has ingresado nada");
-            break;
-        default:
-            alert("La opción interes ingresada no es válida");
-    } 
-
-    switch (temporada){
-        case "INVIERNO":
-            console.log("Has seleccionado invierno");
-            break;
-        case "VERANO":
-            console.log("Has seleccionado verano");
-            break;
-        case "":
-            console.log("No has ingresado nada");
-            break;
-        default:
-            alert("La opción temporada ingresada no es válida");
-    }
-
-    return localidad, interes, temporada;
-
-}
-
 //Función del presupuesto
 
 function presupuesto (localidad, interes, temporada){
@@ -140,10 +90,10 @@ if (msj){
 
 // Código para ver si se encuentra suscripto
 
-let msj3 = confirm ("¿Estas suscripto en la página?");
+let msj2 = confirm ("¿Estas suscripto en la página?");
 
 
-if (msj3){
+if (msj2){
         
     let nombre_ingresado = prompt("Ingrese su nombre").toUpperCase();
     let apellido_ingresado = prompt("Ingrese su apellido").toUpperCase();
@@ -157,20 +107,20 @@ if (msj3){
     
 // Código para solicitar localidad y dar presupuestos
 
-let msj2 = confirm("¿Quieres conocer la Patagonia Argentina?");
+let msj3 = confirm("¿Quieres conocer la Patagonia Argentina?");
 
-while (msj2 == false){
+while (msj3 == false){
 
-    msj2 = confirm("Me parece que has errado en tu respuesta.\n Volvemos a preguntarte: ¿Quieres conocer Argentina?");
+    msj3 = confirm("Me parece que has errado en tu respuesta.\n Volvemos a preguntarte: ¿Quieres conocer Argentina?");
 }
 
-if (msj2){
+if (msj3){
     
     let localidad = prompt ("¿Qué lugar quiere/n conocer?:\n1)Bariloche \n2)El Bolsón").toUpperCase();
     let interes = prompt ("¿Qué prefiere/n:\n1)Naturaleza \n2)Ciudad?").toUpperCase();
     let temporada = prompt ("¿Qué temporada prefiere/n:\n1)Invierno \n2)Verano?").toUpperCase();
 
-    solicitud_lugar(localidad, interes, temporada);
+    /* solicitud_lugar(localidad, interes, temporada); */
 
     if ((localidad != "" && (localidad == "BARILOCHE" || localidad == "EL BOLSON")) && (interes != "" && (interes == "NATURALEZA" || interes == "CIUDAD")) && (localidad != "" && (temporada == "INVIERNO" || temporada == "VERANO"))){
         alert ("HAS ESCOGIDO VIAJAR A " + localidad + " PARA CONOCER LA " + interes + " EN TEMPORADA DE " + temporada + " .");
@@ -185,7 +135,7 @@ if (msj2){
 
 // Código de cambio de presupuesto y las opciones disponibles para Bariloche y El Bolsón
 
-let msj6 = confirm("¿Ahora que has escogido tus preferencias y te hemos dado un posible paquete sin descuento por no ser miembro de la comunidad (Bariloche o El Bolsón), quiéres ver las posibilidades de los precios con descuentos de Bariloche y el Bolsón?");
+let msj4 = confirm("¿Ahora que has escogido tus preferencias y te hemos dado un posible paquete sin descuento por no ser miembro de la comunidad (Bariloche o El Bolsón), quiéres ver las posibilidades de los precios con descuentos de Bariloche y el Bolsón?");
 
 const precioActualizado = arreglo_paquete.map((el)=>{
     return {
@@ -204,7 +154,7 @@ const precioActualizado = arreglo_paquete.map((el)=>{
     }    
 })
 
-if (msj6){
+if (msj4){
     precioActualizado.forEach((el)=>{
         alert("Los descuentos posibles son:\n\n" +"Opción: " + el.id + "\n\nLocalidad:" + el.localidad + "\nProvincia:" + el.provincia + "\nTemporada:" + el.temporada + "\nEstadía:" + el.estadia + "\nViaje:" + el.viaje + "\nActividad:" + el.actividad + "\nTOTAL CON DESCUENTO (por persona por día): $"+ el.precioTotal);
     });
@@ -220,9 +170,9 @@ if (msj6){
 
 const arreglo_nombre = ["Chubut--Puerto Madryn: Esta ciudad es de gran interés turistico por el hermoso paisaje del mar y la visita de las ballenas", "Neuquén--Caviahue-Copahue: Estas ciudades se encuentras cercanas y son especiales para pasear y dirigirse a complejos de aguas calientes", "Río Negro--Viedma: Esta ciudad es la capital de la provincia y tiene un balneario a pocos km para disfrutarlo", "Santa Cruz--El Calafate: Esta ciudad puede ser disfrutada en familia", "Tierra del Fuego--Usuahia: Esta ciudad es la más austral del mundo, en donde se puede apreciar la naturaleza"];
 
-let msj4 = confirm("Ahora que conocés nuestra página, ¿quieres saber de otras localidades para visitar en un futuro?");
+let msj5 = confirm("Ahora que conocés nuestra página, ¿quieres saber de otras localidades para visitar en un futuro?");
 
-if (msj4){
+if (msj5){
     
     alert("Te mostramos que otras posibilidades tenés para conocer de la Patagonia\n\n" + arreglo_nombre.join ("\n\n"));
 
