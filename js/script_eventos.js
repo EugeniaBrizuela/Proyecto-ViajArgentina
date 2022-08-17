@@ -47,7 +47,7 @@ function mostrar_mensaje (){
     }
 }
 
-//Función para agregar al mensaje de bienvenida y eliminar el boton y muetsre solo el mensaje
+//Función para agregar al mensaje de bienvenida y eliminar el boton y muestre solo el mensaje
 function agrego_nombre (nombre){
     let bienvenida = document.createElement("h2");
     bienvenida.textContent = "BIENVENIDO/A " + nombre.toUpperCase() + " A VIAJARGENTINA"; 
@@ -61,7 +61,6 @@ function agrego_nombre (nombre){
 //Reseteo de valor
 inputWelcome.value = "";
 
-
 // FORMULARIO DE LOS PAQUETES 
 //Doy estilo al section de paquetes de viaje
 
@@ -71,7 +70,8 @@ let formpaquetes = document.getElementById("formpaquetes");
 //Cambio los estilos de sección
 formpaquetes.style.backgroundColor = "#E7F9A9";
 formpaquetes.style.backgroundSize = "cover";
-
+formpaquetes.style.paddingTop = "20px";
+formpaquetes.style.paddingBottom = "20px";
 //Validaciones del formulario
 //Llamo a id de avisos 
 let avisosValidacion = document.getElementById ("avisosValidacion");
@@ -82,8 +82,11 @@ btn_buscar.addEventListener("click", ()=>{
     validar_datos();
 
     if (validar_datos()){
-        mostrar_paquete(inputLocalidad, inputInteres, inputTemporada);
+        const resultado = arreglo_paquete.filter ((paquete)=> paquete.localidad === document.querySelector("#localidad").value && paquete.temporada === document.querySelector("#temporada").value);
+        console.log (resultado)
+
     }
+   
 
 })
 
@@ -225,6 +228,12 @@ function crear_caja_paquete (paquete){
     })
 }
 
+//Función para mostrar paquete que se desea según la localidad-interés-temporada
+/* 
+function mostrar_paquete(){
+    let resultado = arreglo_paquete.filter ((paquete)=> paquete.localidad === document.getElementById("localidad").value);
+} */
+
 //Obtener la opción elegida según la localidad-interes-temporada y llamar a la funcion crear_caja_paquete-SE HARÁ CUANDO SE HAGA DESAFÍO DE STORAGE
 /* function mostrar_paquete(inputLocalidad, inputInteres, inputTemporada){
 
@@ -247,3 +256,4 @@ function crear_caja_paquete (paquete){
     }
 
 } */
+

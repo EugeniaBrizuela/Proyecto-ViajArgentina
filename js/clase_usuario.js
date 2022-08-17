@@ -1,20 +1,19 @@
 class Usuario {
-    constructor (nombre_usuario, apellido_usuario, contraseña){
-        this.nombre_usuario = nombre_usuario;
-        this.apellido_usuario = apellido_usuario;
+    constructor (usuario, nombre, apellido, contraseña){
+        this.usuario = usuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.contraseña = contraseña;
+    }
+
+    info_usuario(){
+
+        return `Información del usuario:\n ${this.usuario} - ${this.nombre} - ${this.apellido}`
+
     }
 }
 
-let arreglo_usuario = new Array();
 
-let usuario1 = new Usuario ("LUIS", "PASTOR", "OLAMUNDO");
-let usuario2 = new Usuario ("MARTA", "MARTINEZ", "GATO");
-let usuario3 = new Usuario ("EUGE", "BRIZUELA", "TRAMPA");
 
-arreglo_usuario.push (usuario1);
-arreglo_usuario.push (usuario2);
-arreglo_usuario.push (usuario3);
 
-console.log(arreglo_usuario)
 

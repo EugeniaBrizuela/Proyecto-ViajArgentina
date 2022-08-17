@@ -27,6 +27,13 @@ body{
 
 }
 
+.main__background__suscribe{
+    background-image: url(../img/fondo_suscribe.jpg);
+    width: 100%;
+    background-size: cover;
+    height: 740px;
+}
+
 .main__header{
     display: flex;
     flex-direction: row;
@@ -111,7 +118,7 @@ h2{
 }
 
 .main__button{
-    background-color: #deff6779;
+    background-color: #deff6780;
     border-color:#7C6A0A;
     border-style: solid;
     border-width: 2px;
@@ -124,6 +131,25 @@ h2{
     margin-right: 450px;
     margin-top: 50px;
     margin-bottom: 5px;
+}
+
+.button{
+    display: flex;
+    flex-direction: row;
+    margin-left: 584px;
+    margin-top: 100px;
+}
+
+.main__button2{
+    background-color: #deff67e7;
+    border-color:#7C6A0A;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 25px;
+    font-family: 'Poiret One', cursive;
+    color: #5A5A5A;
+    margin: 20px;
+    padding: 6px;
 }
 
 .borderColor {
