@@ -79,14 +79,8 @@ let btn_buscar = document.getElementById ("btn_buscar");
 
 //Agrego evento al clickear buscar
 btn_buscar.addEventListener("click", ()=>{
-    validar_datos();
 
-    if (validar_datos()){
-        const resultado = arreglo_paquete.filter ((paquete)=> paquete.localidad === document.querySelector("#localidad").value && paquete.temporada === document.querySelector("#temporada").value);
-        console.log (resultado)
-
-    }
-   
+    validar_datos(); 
 
 })
 
@@ -131,11 +125,19 @@ function validar_datos(){
         avisosValidacion.appendChild(listaAvisos);
         
         
+    }else{
+
+        const resultado = arreglo_paquete.filter ((paquete)=> (paquete.localidad === document.querySelector("#localidad").value) && (paquete.temporada === document.querySelector("#temporada").value));
+        if (resultado != ""){
+
+            crear_caja_paquete(paquete);
+        }
     }
 
     inputLocalidad.value = "";
     inputInteres.value = "";
     inputTemporada.value = "";
+
 
     return arreglo_msj.lenght == 0;
     

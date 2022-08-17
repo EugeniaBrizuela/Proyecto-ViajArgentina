@@ -13,6 +13,10 @@ class Usuario {
     }
 }
 
+const array_usuario = [];
+
+array_usuario.push (new Usuario ("euge", "eugenia", "brizuela", 1234));
+localStorage.setItem("array_usuario", JSON.stringify(array_usuario));
 
 
 

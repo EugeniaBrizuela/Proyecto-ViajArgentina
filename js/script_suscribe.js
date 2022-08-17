@@ -3,8 +3,8 @@
 //Llamo a botones y cambio el color de fondo
 let btn_ingresar = document.getElementById("btn_ingresar");
 let btn_registrar = document.getElementById("btn_registrar");
-btn_ingresar.style.backgroundColor = "#deff6779"
-btn_registrar.style.backgroundColor = "#deff6779"
+btn_ingresar.style.backgroundColor = "#deff6779";
+btn_registrar.style.backgroundColor = "#deff6779";
 
 //Llamo a etiqueta formularios y cambio los estilos
 let formIngreso = document.getElementById("formingreso");
@@ -36,40 +36,13 @@ btn_ingreso.addEventListener("click", ()=>{
 
     buscar_usuario();
 
-    if (buscar_usuario() != false){
-        let msj1 = document.getElementById("msjError1");
-        msj1.textContent = "Bienvenido/a " + info_usuario();
-        msj1.style.fontSize = "20px";
-        msj1.style.textAlign = "center";
-
-    }else{
-        let msj2 = document.getElementById("msjError2");
-        msj2.textContent = "El usuario no existe";
-        msj2.style.fontSize = "20px";
-        msj2.style.textAlign = "center";
-    }
 })
 
 //REGISTRO
 //Agrego evento de click y funcionalidad
 btn_registro.addEventListener("click", ()=>{
-
+   
     validar_datos2();
-    
-    if (validar_datos2()){
-        
-        let nuevo_usuario = new Usuario (inputNuevoUsuario, inputNuevoNombre, inputNuevoApellido, inputNuevaContraseña);
-        guardar_usuario (nuevo_usuario);
-
-        let msj_exitoso = document.getElementById("msjError3");
-        msj_exitoso.textContent = "El usuario nuevo se ha creado con éxito!";
-        
-    }else{
-
-        let msj_no_exitoso = document.getElementById("msjError4");
-        msj_no_exitoso.textContent (item_msj);
-        
-    }
 
 })
 
@@ -77,40 +50,53 @@ btn_registro.addEventListener("click", ()=>{
 function buscar_usuario (){
 
     let inputUsuario = document.getElementById("usuario").value;
-    let inputNombre = document.getElementById("nombre").value;
-    let inputApellido = document.getElementById("apellido").value;
     let inputContraseña = document.getElementById("contraseña").value;
 
-    if (!localStorage.getItem("listUsuarios")){
+    if (!localStorage.getItem("array_usuario")){
+
         return false;
+        
          
     }
 
-    let usuariosAlmacenados = JSON.parse(localStorage.getItem("listUsuarios"));
+    let usuario_almacenado = JSON.parse(localStorage.getItem("array_usuario"));
     let usuariosEncontrados = false;
 
     let i = 0;
 
-    while ((!usuariosEncontrados) && (i != usuariosAlmacenados.length)){
+    while ((!usuariosEncontrados) && (i != usuario_almacenado.length)){
 
-        if (usuariosAlmacenados [i].inputUsuario === usuario){
+        if (usuario_almacenado[i].usuario === inputUsuario ){
 
-            usuariosEncontrados = usuariosAlmacenados[i];
+            usuariosEncontrados = usuario_almacenado[i];
         }
 
         i++
     }
 
     inputUsuario.value = "";
-    inputNombre.value = "";
-    inputApellido.value = "";
     inputContraseña.value = "";
+
+    if (usuariosEncontrados != false){
+        let msj1 = document.getElementById("msjError1");
+        msj1.textContent = "Bienvenido/a " + inputUsuario + "!!";
+        msj1.style.fontSize = "30px";
+        msj1.style.color = "#404040";
+        msj1.style.textAlign = "center";
+
+    }else{
+        let msj2 = document.getElementById("msjError2");
+        msj2.textContent = "El usuario no existe";
+        msj2.style.fontSize = "30px";
+        msj2.style.color = "#404040";
+        msj2.style.textAlign = "center";
+    }
 
     return usuariosEncontrados;
 
 }
 
-/* function validar_datos (){
+function validar_datos2 (){
     
     let msj = "";
     
@@ -120,7 +106,7 @@ function buscar_usuario (){
     let inputNuevaContraseña = document.getElementById("nueva_contraseña").value;
 
 
-    if ((inputNuevoUsuario == "") && (inputNuevoNombre == "") && (inputNuevoApellido == "") && (inputNuevaContraseña == "")){
+    if ((inputNuevoUsuario != "") && (inputNuevoNombre != "") && (inputNuevoApellido != "") && (inputNuevaContraseña != "")){
 
         let dato_usuario = buscar_usuario();
         
@@ -131,7 +117,30 @@ function buscar_usuario (){
 
     }else {
 
-        msj = "Los datos ingresados son errones, se deben ingresar todos los datos"
+        msj = "Los datos ingresados son erroneos, se deben ingresar todos los datos"
+    }
+
+    if (msj == ""){
+        
+        let nuevo_usuario = new Usuario (inputNuevoUsuario, inputNuevoNombre, inputNuevoApellido, inputNuevaContraseña);
+        guardar_usuario (nuevo_usuario);
+
+        let msj_exitoso = document.getElementById("msjError3");
+        msj_exitoso.textContent = "El usuario " + inputNuevoUsuario + " se ha creado con éxito!";
+        msj_exitoso.style.fontSize = "30px";
+        msj_exitoso.style.color = "#404040";
+        msj_exitoso.style.textAlign= "center";
+        let msj2 = document.getElementById("msjError2");
+        msj2.remove();
+        
+    }else{
+
+        let msj_no_exitoso = document.getElementById("msjError4");
+        msj_no_exitoso.textContent = msj;
+        msj_no_exitoso.style.fontSize = "30px";
+        msj_no_exitoso.style.color = "#404040";
+        msj_no_exitoso.style.textAlign= "center";
+        
     }
 
     inputNuevoUsuario.value = "";
@@ -142,12 +151,28 @@ function buscar_usuario (){
     return msj;
 
     
-} */
+} 
 
 
-function guardar_usuario(){
+function guardar_usuario(nuevo_usuario){
 
-    if (localStorage.getItem("listUsuarios")){
+    let usuario_almacenado = localStorage.getItem("array_usuario");
+
+
+    if (usuario_almacenado != null){
+
+        let array = JSON.parse (usuario_almacenado);
+        array_usuario.push(nuevo_usuario);
+        
+        localStorage.setItem("array_usuario", JSON.stringify(array_usuario));
+    
+    }else{
+
+        array_usuario.push(nuevo_usuario);
+        localStorage.setItem("array_usuario", JSON.stringify(array_usuario));
+    }
+
+/*     if (localStorage.getItem("array_usuario")){
 
         let usuariosAlmacenados = JSON.parse (localStorage.getItem("listUsuarios"));
         usuariosAlmacenados.push(nuevo_usuario);
@@ -155,17 +180,17 @@ function guardar_usuario(){
         let usuAlmacenados_string = JSON.stringify(usuariosAlmacenados);
         localStorage.setItem("listUsuarios", usuAlmacenados_string);
     
-    }else{
+    }else{ */
 
-        let usuariosAlmacenados = new Array();
-        usuariosAlmacenados.push(nuevo_usuario);
+       /*  let usuariosAlmacenados = new Array(); */
+        /* usuariosAlmacenados.push(nuevo_usuario);
         let usuAlmacenados_string = JSON.stringify(usuariosAlmacenados);
         localStorage.setItem("listUsuarios", usuAlmacenados_string);
-    }
+    } */
 }
 
 
-function validar_datos2 (){
+/* function validar_datos2 (){
 
     avisosValidacion2.innerHTML = "";
 
@@ -215,12 +240,12 @@ function validar_datos2 (){
         listaAvisosRegistro.style.color = "#404040";
 
         arreglo_msj_registro.forEach((msj) =>{
-            listaAvisosRegistro.appendChild(crear_msj (msj))
+            listaAvisosRegistro.appendChild(crear_msj(msj))
         })
     
+        avisosValidacion2.appendChild(listaAvisosRegistro);
     }
 
-    avisosValidacion2.appendChild(listaAvisosRegistro);
 
     inputNuevoUsuario.value = "";
     inputNuevoNombre.value = "";
@@ -232,10 +257,10 @@ function validar_datos2 (){
 
 }    
 
-function crear_msj (msj){
+function crear_msj(msj){
     let item_msj = document.createElement("li");
     item_msj.textContent = msj;
-    
 
     return item_msj;
 }
+ */
