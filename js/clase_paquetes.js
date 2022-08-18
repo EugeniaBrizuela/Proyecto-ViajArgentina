@@ -1,7 +1,7 @@
 // Clase de los paquetes posibles para las dos ciudades (Bariloche - El Bolsón)
 
 class Paquete {
-    constructor(id, localidad, provincia, estadia, precioEstadia, viaje, precioViaje, temporada, actividad, precioActividad, tarjeta, precioTotal, image){
+    constructor(id, localidad, provincia, estadia, precioEstadia, viaje, precioViaje, temporada, interes, actividad, precioActividad, tarjeta, precioTotal, image){
         this.id = parseInt(id);
         this.localidad = localidad;
         this.provincia = provincia;
@@ -10,6 +10,7 @@ class Paquete {
         this.viaje = viaje;
         this.precioViaje = parseInt(precioViaje);
         this.temporada = temporada;
+        this.interes = interes;
         this.actividad = actividad;
         this.precioActividad = parseInt(precioActividad);
         this.tarjeta = tarjeta;
@@ -23,7 +24,7 @@ class Paquete {
      */
 
     descripcionPaquete(){
-        return "Descripción del paquete:\n\n" + "Localidad: " + this.localidad + "\nTemporada: " + this.temporada + "\nEstadía: " + this.estadia + "\nViaje: " + this.viaje + "\nActividad: " + this.actividad;
+        alert("Descripción del paquete:\n\n" + "Localidad: " + this.localidad + "\nTemporada: " + this.temporada + "\nEstadía: " + this.estadia + "\nViaje: " + this.viaje + "\nActividad: " + this.actividad);
     }
     /**
      * 
@@ -47,21 +48,21 @@ class Paquete {
 
 let arreglo_paquete = new Array ();
 //Actividad en Bariloche-Naturaleza-Invierno
-let paquete1 = new Paquete (1, "Bariloche", "Rio Negro", "Los Nonos", 13000, "Avión (Buenos Aires-Bariloche)", 20000, "Invierno", "Esquí en Cerro Catedral", 8000, true, 41000, "../img/bariloche_natu_inv.jpg");
+let paquete1 = new Paquete (1, "BARILOCHE", "Rio Negro", "Los Nonos", 13000, "Avión (Buenos Aires-Bariloche)", 20000, "INVIERNO", "NATURALEZA", "Esquí en Cerro Catedral", 8000, true, 41000, "../img/bariloche_natu_inv.jpg");
 //Actividad en Bariloche-Ciudad-Invierno
-let paquete2 = new Paquete (2, "Bariloche", "Rio Negro", "Huemul", 20000, "Avión (Buenos Aires-Bariloche)", 20000, "Invierno", "Complejo de spa Caviahue", 10000, false, 50000, "../img/bariloche_ciudad_inv.jpg");
+let paquete2 = new Paquete (2, "BARILOCHE", "Rio Negro", "Huemul", 20000, "Avión (Buenos Aires-Bariloche)", 20000, "INVIERNO", "CIUDAD", "Complejo de spa Caviahue", 10000, false, 50000, "../img/bariloche_ciudad_inv.jpg");
 //Actividad en Bariloche-Naturaleza-Verano
-let paquete3 = new Paquete (3, "Bariloche", "Rio Negro", "Cabañas Alma", 15000, "Avión (Buenos Aires-Bariloche)", 20000, "Verano", "Paseo en barco y actividad en bicicleta", 12000, true, 47000, "../img/bariloche_natu_verano.jpg");
+let paquete3 = new Paquete (3, "BARILOCHE", "Rio Negro", "Cabañas Alma", 15000, "Avión (Buenos Aires-Bariloche)", 20000, "VERANO", "NATURALEZA", "Paseo en barco y actividad en bicicleta", 12000, true, 47000, "../img/bariloche_natu_verano.jpg");
 //Actividad en Bariloche-Ciudad-Verano
-let paquete4 = new Paquete (4, "Bariloche", "Rio Negro", "Huemul", 20000, "Avión (Buenos Aires-Bariloche)", 20000, "Verano", "Complejo de verano Patagonia Splash", 15000, true, 55000, "../img/bariloche_ciudad_verano.jpg");
+let paquete4 = new Paquete (4, "BARILOCHE", "Rio Negro", "Huemul", 20000, "Avión (Buenos Aires-Bariloche)", 20000, "VERANO", "CIUDAD", "Complejo de verano Patagonia Splash", 15000, true, 55000, "../img/bariloche_ciudad_verano.jpg");
 //Actividad en El Bolsón-Naturaleza-Invierno
-let paquete5 = new Paquete (5, "El Bolsón", "Neuquén", "El Noble", 8000, "Avión (Buenos Aires-Neuquén)-Omnibus (Neuquén-El Bolsón)", 18000,"Invierno", "Snowboard y culipatín", 4000, false, 30000, "../img/bolson_natu_inv.jpg");
+let paquete5 = new Paquete (5, "EL BOLSON", "Neuquén", "El Noble", 8000, "Avión (Buenos Aires-Neuquén)-Omnibus (Neuquén-El Bolsón)", 18000,"INVIERNO", "NATURALEZA", "Snowboard y culipatín", 4000, false, 30000, "../img/bolson_natu_inv.jpg");
 //Actividad en El Bolsón-Ciudad-Invierno
-let paquete6 = new Paquete (6, "El Bolsón", "Neuquén", "El Noble", 8000, "Avión (Buenos Aires-Neuquén)-Alquiler auto(Neuquén-El Bolsón)", 20000,"Invierno", "Complejo de relajación La Esperanza", 8000, false, 36000, "../img/bolson_ciu_inv.jpg");
+let paquete6 = new Paquete (6, "EL BOLSON", "Neuquén", "El Noble", 8000, "Avión (Buenos Aires-Neuquén)-Alquiler auto(Neuquén-El Bolsón)", 20000,"INVIERNO", "CIUDAD", "Complejo de relajación La Esperanza", 8000, false, 36000, "../img/bolson_ciu_inv.jpg");
 //Actividad en El Bolsón-Naturaleza-Verano
-let paquete7 = new Paquete (7, "El Bolsón", "Neuquén", "Camping La Huella", 5000, "Avión (Buenos Aires-Neuquén)-Omnibus(Neuquén-El Bolsón)", 18000,"Verano", "Camino al refugio Cajon del Azul", 5000, true, 23500, "../img/bolson_natu_ver.jpg");
+let paquete7 = new Paquete (7, "EL BOLSON", "Neuquén", "Camping La Huella", 5000, "Avión (Buenos Aires-Neuquén)-Omnibus(Neuquén-El Bolsón)", 18000,"VERANO", "NATURALEZA", "Camino al refugio Cajon del Azul", 5000, true, 23500, "../img/bolson_natu_ver.jpg");
 //Actividad en El Bolsón-Ciudad-Verano
-let paquete8 = new Paquete (8, "El Bolsón", "Neuquén", "Hotel La Montañita", 14000, "Avión (Buenos Aires-Neuquén)-Omnibus(Neuquén-El Bolsón)", 18000,"Verano", "Tour por la ciudad", 8000, false, 40000, "../img/bolson_ciu_ver.jpg");
+let paquete8 = new Paquete (8, "EL BOLSON", "Neuquén", "Hotel La Montañita", 14000, "Avión (Buenos Aires-Neuquén)-Omnibus(Neuquén-El Bolsón)", 18000,"VERANO", "CIUDAD", "Tour por la ciudad", 8000, false, 40000, "../img/bolson_ciu_ver.jpg");
 
 
 arreglo_paquete.push(paquete1);

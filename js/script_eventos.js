@@ -127,10 +127,17 @@ function validar_datos(){
         
     }else{
 
-        const resultado = arreglo_paquete.filter ((paquete)=> (paquete.localidad === document.querySelector("#localidad").value) && (paquete.temporada === document.querySelector("#temporada").value));
-        if (resultado != ""){
+        const resultado = arreglo_paquete.filter((prop)=> {
+            return (prop.localidad == inputLocalidad && prop.temporada == inputTemporada && prop.interes == inputInteres);
+        });
 
-            crear_caja_paquete(paquete);
+        if (resultado != ""){
+            resultado.forEach((paquete) => crear_caja_paquete(paquete));
+            
+            btn_buscar.remove();
+        
+        }else{
+            alert("No se encuentran coincidencias");
         }
     }
 

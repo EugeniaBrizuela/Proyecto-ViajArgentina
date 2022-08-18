@@ -6,24 +6,26 @@ let btn_registrar = document.getElementById("btn_registrar");
 btn_ingresar.style.backgroundColor = "#deff6779";
 btn_registrar.style.backgroundColor = "#deff6779";
 
-//Llamo a etiqueta formularios y cambio los estilos
+//Llamo a etiquetas de los formularios y cambio los estilos
 let formIngreso = document.getElementById("formingreso");
-formIngreso.style.backgroundColor = "#E7F9A9";
-formIngreso.style.backgroundSize = "cover";
-formIngreso.style.paddingTop= "20px";
-formIngreso.style.paddingBottom = "20px"
-formIngreso.style.borderStyle = "solid";
-formIngreso.style.borderColor = "#7C6A0A";
-formIngreso.style.borderWidth = "2px";
+let ingreso = document.getElementById("ingreso");
+ingreso.style.backgroundColor = "#E7F9A9";
+ingreso.style.backgroundSize = "cover";
+ingreso.style.paddingTop= "20px";
+ingreso.style.paddingBottom = "20px"
+ingreso.style.borderStyle = "solid";
+ingreso.style.borderColor = "#7C6A0A";
+ingreso.style.borderWidth = "2px";
 
 let formRegistro = document.getElementById("formregistro");
-formRegistro.style.backgroundColor = "#E7F9A9";
-formRegistro.style.backgroundSize = "cover";
-formRegistro.style.paddingTop= "20px";
-formRegistro.style.paddingBottom = "20px";
-formRegistro.style.borderStyle = "solid";
-formRegistro.style.borderColor= "#7C6A0A";
-formRegistro.style.borderWidth = "2px";
+let registro = document.getElementById("registro");
+registro.style.backgroundColor = "#E7F9A9";
+registro.style.backgroundSize = "cover";
+registro.style.paddingTop= "20px";
+registro.style.paddingBottom = "20px";
+registro.style.borderStyle = "solid";
+registro.style.borderColor= "#7C6A0A";
+registro.style.borderWidth = "2px";
 
 
 //INGRESO
@@ -46,24 +48,26 @@ btn_registro.addEventListener("click", ()=>{
 
 })
 
-
+// Función para buscar al usuario ingresado en formularios
 function buscar_usuario (){
 
     let inputUsuario = document.getElementById("usuario").value;
     let inputContraseña = document.getElementById("contraseña").value;
 
+    // Corroboro que esté vacío el array
     if (!localStorage.getItem("array_usuario")){
 
         return false;
-        
          
     }
 
+    // Parseo los valores del array para trabajar con los objetos
     let usuario_almacenado = JSON.parse(localStorage.getItem("array_usuario"));
+    
     let usuariosEncontrados = false;
-
+    
     let i = 0;
-
+    // Genero un bucle para obtener el dato de usuariosEncontrados 
     while ((!usuariosEncontrados) && (i != usuario_almacenado.length)){
 
         if (usuario_almacenado[i].usuario === inputUsuario ){
@@ -74,9 +78,11 @@ function buscar_usuario (){
         i++
     }
 
+    //Reseteo los input
     inputUsuario.value = "";
     inputContraseña.value = "";
 
+    //Segun el valor obtenido muestro uno u otro mensaje si esta regustrado o no el usuario
     if (usuariosEncontrados != false){
         let msj1 = document.getElementById("msjError1");
         msj1.textContent = "Bienvenido/a " + inputUsuario + "!!";
@@ -96,6 +102,8 @@ function buscar_usuario (){
 
 }
 
+
+// Función para validar los datos ingresados en el formulario de registro
 function validar_datos2 (){
     
     let msj = "";
@@ -109,7 +117,8 @@ function validar_datos2 (){
     if ((inputNuevoUsuario != "") && (inputNuevoNombre != "") && (inputNuevoApellido != "") && (inputNuevaContraseña != "")){
 
         let dato_usuario = buscar_usuario();
-        
+
+        // Se ve si esta ya registrado o no
         if (dato_usuario != false){
 
             msj = "El usuario ingresado ya existe"
@@ -119,7 +128,8 @@ function validar_datos2 (){
 
         msj = "Los datos ingresados son erroneos, se deben ingresar todos los datos"
     }
-
+    
+    // Se emplea un condicional para guardar un nuevo usuario o se muestra el mensaje correspondiente
     if (msj == ""){
         
         let nuevo_usuario = new Usuario (inputNuevoUsuario, inputNuevoNombre, inputNuevoApellido, inputNuevaContraseña);
@@ -142,7 +152,8 @@ function validar_datos2 (){
         msj_no_exitoso.style.textAlign= "center";
         
     }
-
+    
+    //Reseteo los valores de los input
     inputNuevoUsuario.value = "";
     inputNuevoNombre.value = "";
     inputNuevoApellido.value = "";
@@ -153,7 +164,7 @@ function validar_datos2 (){
     
 } 
 
-
+// Función para guardar a un nuevo usuario en el LocalStorage
 function guardar_usuario(nuevo_usuario){
 
     let usuario_almacenado = localStorage.getItem("array_usuario");
@@ -171,96 +182,4 @@ function guardar_usuario(nuevo_usuario){
         array_usuario.push(nuevo_usuario);
         localStorage.setItem("array_usuario", JSON.stringify(array_usuario));
     }
-
-/*     if (localStorage.getItem("array_usuario")){
-
-        let usuariosAlmacenados = JSON.parse (localStorage.getItem("listUsuarios"));
-        usuariosAlmacenados.push(nuevo_usuario);
-
-        let usuAlmacenados_string = JSON.stringify(usuariosAlmacenados);
-        localStorage.setItem("listUsuarios", usuAlmacenados_string);
-    
-    }else{ */
-
-       /*  let usuariosAlmacenados = new Array(); */
-        /* usuariosAlmacenados.push(nuevo_usuario);
-        let usuAlmacenados_string = JSON.stringify(usuariosAlmacenados);
-        localStorage.setItem("listUsuarios", usuAlmacenados_string);
-    } */
 }
-
-
-/* function validar_datos2 (){
-
-    avisosValidacion2.innerHTML = "";
-
-    let inputNuevoUsuario = document.getElementById("nuevo_usuario").value;
-    let inputNuevoNombre = document.getElementById("nuevo_nombre").value;
-    let inputNuevoApellido = document.getElementById("nuevo_apellido").value;
-    let inputNuevaContraseña = document.getElementById("nueva_contraseña").value;
-        
-    let arreglo_msj_registro = new Array();
-    
-    if (inputNuevoUsuario == ""){
-        
-        arreglo_msj_registro.push ("No has ingresado un nombre de usuario, debe ingresar al menos un caracter");
-
-    }else{
-
-        let busqueda = buscar_usuario();
-
-        if(busqueda != false){
-
-            arreglo_msj_registro.push("Ya existe el usuario");
-        }
-    }
-
-    if (inputNuevoNombre == ""){
-
-        arreglo_msj_registro.push ("No has ingresado ningún nombre");
-    }
-
-    if (inputNuevoApellido == ""){
-        
-        arreglo_msj_registro.push ("No has ingresado ningún apellido");
-    }
-
-    if (inputNuevaContraseña == ""){
-
-        arreglo_msj_registro.push("No has ingresado ninguna contraseña");
-    }
-
-
-    if (arreglo_msj_registro.length > 0){
-
-        let listaAvisosRegistro = document.createElement("div");
-        listaAvisosRegistro.textContent = "Los siguientes puntos deben corregirse: ";
-        listaAvisosRegistro.style.fontSize = "20px";
-        listaAvisosRegistro.style.textAlign = "center";
-        listaAvisosRegistro.style.color = "#404040";
-
-        arreglo_msj_registro.forEach((msj) =>{
-            listaAvisosRegistro.appendChild(crear_msj(msj))
-        })
-    
-        avisosValidacion2.appendChild(listaAvisosRegistro);
-    }
-
-
-    inputNuevoUsuario.value = "";
-    inputNuevoNombre.value = "";
-    inputNuevoApellido.value = "";
-    inputNuevaContraseña.value = "";
-
-    return arreglo_msj_registro.lenght == 0;
-
-
-}    
-
-function crear_msj(msj){
-    let item_msj = document.createElement("li");
-    item_msj.textContent = msj;
-
-    return item_msj;
-}
- */
