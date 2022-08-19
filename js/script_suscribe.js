@@ -55,11 +55,7 @@ function buscar_usuario (){
     let inputContraseña = document.getElementById("contraseña").value;
 
     // Corroboro que esté vacío el array
-    if (!localStorage.getItem("array_usuario")){
-
-        return false;
-         
-    }
+    !localStorage.getItem("array_usuario") && false;
 
     // Parseo los valores del array para trabajar con los objetos
     let usuario_almacenado = JSON.parse(localStorage.getItem("array_usuario"));

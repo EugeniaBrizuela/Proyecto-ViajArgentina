@@ -95,20 +95,11 @@ function validar_datos(){
     
     let arreglo_msj = new Array();
 
-    if (inputLocalidad == ""){
+    inputLocalidad == "" && arreglo_msj.push("La localidad ingresada no es correcta, debe ingresar la opción entre BARILOCHE o EL BOLSON");
 
-        arreglo_msj.push("La localidad ingresada no es correcta, debe ingresar la opción entre Bariloche o El Bolson");
-    }
-    
-    if (inputInteres == ""){
-        
-        arreglo_msj.push ("El interés ingresado no es correcto, debe ingresar naturaleza o ciudad");
-    }
-    
-    if (inputTemporada == ""){
-        
-        arreglo_msj.push("La temporada no coincide con lo que debe ser ingresado, debe ingresar verano o invierno");
-    }
+    inputInteres == "" && arreglo_msj.push("El interés ingresado no es correcto, debe ingresar NATURALEZA o CIUDAD");
+
+    inputTemporada == "" && arreglo_msj.push("La temporada no coincide con lo que debe ser ingresado, debe ingresarse VERANO o INVIERNO");
     
     if (arreglo_msj.length > 0){
         
@@ -131,14 +122,10 @@ function validar_datos(){
             return (prop.localidad == inputLocalidad && prop.temporada == inputTemporada && prop.interes == inputInteres);
         });
 
-        if (resultado != ""){
-            resultado.forEach((paquete) => crear_caja_paquete(paquete));
-            
-            btn_buscar.remove();
-        
-        }else{
-            alert("No se encuentran coincidencias");
-        }
+        resultado ? resultado.forEach ((paquete) => crear_caja_paquete(paquete)) : alert("No se encuentran coincidencias");
+
+        btn_buscar.remove();
+
     }
 
     inputLocalidad.value = "";
@@ -237,32 +224,5 @@ function crear_caja_paquete (paquete){
     })
 }
 
-//Función para mostrar paquete que se desea según la localidad-interés-temporada
-/* 
-function mostrar_paquete(){
-    let resultado = arreglo_paquete.filter ((paquete)=> paquete.localidad === document.getElementById("localidad").value);
-} */
 
-//Obtener la opción elegida según la localidad-interes-temporada y llamar a la funcion crear_caja_paquete-SE HARÁ CUANDO SE HAGA DESAFÍO DE STORAGE
-/* function mostrar_paquete(inputLocalidad, inputInteres, inputTemporada){
-
-    if (inputLocalidad == "BARILOCHE" && inputInteres == "NATURALEZA" && inputTemporada == "INVIERNO"){
-        alert (paquete1.descripcionPaquete() + "\n\n" + paquete1.precioPaquete());
-    }else if (inputLocalidad == "BARILOCHE" && inputInteres == "NATURALEZA" && inputTemporada == "VERANO"){
-        alert (paquete3.descripcionPaquete() + "\n\n" + paquete3.precioPaquete());
-    }else if (inputLocalidad == "BARILOCHE" && inputInteres == "CIUDAD" && inputTemporada == "INVIERNO"){
-        alert (paquete2.descripcionPaquete() + "\n\n" + paquete2.precioPaquete());
-    }else if (inputLocalidad == "BARILOCHE" && inputInteres == "CIUDAD" && inputTemporada == "VERANO"){
-        alert (paquete4.descripcionPaquete() + "\n\n" + paquete4.precioPaquete());
-    }else if (inputLocalidad == "EL BOLSON" && inputInteres == "NATURALEZA" && inputTemporada == "INVIERNO"){
-        alert (paquete5.descripcionPaquete() + "\n\n" + paquete5.precioPaquete());
-    }else if (inputLocalidad == "EL BOLSON" && inputInteres == "NATURALEZA" && inputTemporada == "VERANO"){
-        alert (paquete7.descripcionPaquete() + "\n\n" + paquete7.precioPaquete());
-    }else if (inputLocalidad == "EL BOLSON" && inputInteres == "CIUDAD" && inputTemporada == "INVIERNO"){
-        alert (paquete6.descripcionPaquete() + "\n\n" + paquete6.precioPaquete());
-    }else if (inputLocalidad == "EL BOLSON" && inputInteres == "CIUDAD" && inputTemporada == "VERANO"){
-        alert (paquete8.descripcionPaquete() + "\n\n" + paquete8.precioPaquete());
-    }
-
-} */
 
