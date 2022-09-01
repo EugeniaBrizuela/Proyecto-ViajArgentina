@@ -4,6 +4,10 @@
 let home = document.getElementById("home");
 let inputWelcome = document.getElementById ("inputWelcome");
 
+
+//Url de data.json para usar API-Fetch
+const url = "./js/data.json"; 
+
 //Cambio los estilos de caja del input
 inputWelcome.style.backgroundColor = "#deff6779";
 inputWelcome.style.borderColor = "#7C6A0A";
@@ -34,8 +38,42 @@ let texto = document.querySelector("section h1");
 inputWelcome.addEventListener("keyup", event => {
     if (event.which === 13 || event.keyCode === 13){
         mostrar_mensaje();
+
+        Toastify({
+            text: "Gracias por visitar nuestra página!",
+            className: "main__button3",
+            backgroundColor: "#7C6A0A",
+            color: "#5A5A5A",
+            gravity: "top",
+            position: "left",
+            duration: 2000,
+        }).showToast();
+        
     }
 });
+
+//Se colocan mensajes con toastify de ingresar y registrar
+
+Toastify({
+    text: "Ingresar",
+    className: "main__button3",
+    backgroundColor: "#7C6A0A",
+    duration: 3000,
+    gravity: "bottom",
+    position: "left",
+    destination: "./pages/suscribite.html",
+  }).showToast();
+
+Toastify({
+    text: "Registrarse",
+    className: "main__button3",
+    backgroundColor: "#7C6A0A",
+    duration: 3000,
+    gravity: "bottom",
+    position: "right",
+    destination: "./pages/suscribite.html",
+    }).showToast();
+
 
 //Función para mostrar el nombre escrito en el input 
 function mostrar_mensaje (){
@@ -80,7 +118,30 @@ let btn_buscar = document.getElementById ("btn_buscar");
 //Agrego evento al clickear buscar
 btn_buscar.addEventListener("click", ()=>{
 
-    validar_datos(); 
+    validar_datos();
+    
+    let timerInterval
+    Swal.fire({
+    title: 'Buscando tu mejor paquete',
+    html: 'Mostrando en <b></b> milisegundos.',
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+        b.textContent = Swal.getTimerLeft()
+        }, 100)
+    },
+    willClose: () => {
+        clearInterval(timerInterval)
+    }
+    }).then((result) => {
+    /* Read more about handling dismissals below */
+    if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+    }
+    })
 
 })
 
@@ -118,15 +179,30 @@ function validar_datos(){
         
     }else{
 
-        const resultado = arreglo_paquete.filter((prop)=> {
+        fetch(url)
+        .then(response => response.json())
+        .then((data) =>{
+            console.log(data);
+            const resultado1 = data.filter((prop)=> {
+                return (prop.localidad == inputLocalidad && prop.temporada == inputTemporada && prop.interes == inputInteres);
+            });
+    
+            resultado1 ? resultado1.forEach ((paquete) => crear_caja_paquete(paquete)) : alert("No se encuentran coincidencias");
+    
+            btn_buscar.remove(); 
+        
+        /* const resultado = arreglo_paquete.filter((prop)=> {
             return (prop.localidad == inputLocalidad && prop.temporada == inputTemporada && prop.interes == inputInteres);
         });
-
+        
         resultado ? resultado.forEach ((paquete) => crear_caja_paquete(paquete)) : alert("No se encuentran coincidencias");
-
-        btn_buscar.remove();
-
+        
+        btn_buscar.remove(); */
+        })
     }
+    
+
+    
 
     inputLocalidad.value = "";
     inputInteres.value = "";
@@ -136,6 +212,8 @@ function validar_datos(){
     return arreglo_msj.lenght == 0;
     
 }
+
+
 
 //Función para crear la lista de errores
 function crear_lista(mensaje){
@@ -164,12 +242,39 @@ contenedor.style.backgroundSize = "cover";
 //Función para ver todos los paquetes
 function ver_paquete(){
 
+    let timerInterval
+    Swal.fire({
+    title: 'Cargando paquetes',
+    html: 'Mostrando en <b></b> milisegundos.',
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+        b.textContent = Swal.getTimerLeft()
+        }, 100)
+    },
+    willClose: () => {
+        clearInterval(timerInterval)
+    }
+    }).then((result) => {
+    /* Read more about handling dismissals below */
+    if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+    }
+    })
+
+    for (let paquete of arreglo_paquete){
+        crear_caja_paquete(paquete)
+    }
+/* 
     for (let i = 0; i < arreglo_paquete.length; i++){
         
         let objeto_paquete = arreglo_paquete [i];
         crear_caja_paquete(objeto_paquete);
         
-    }
+    } */
     return true;
 }
 
@@ -223,6 +328,3 @@ function crear_caja_paquete (paquete){
         ctn.style.backgroundColor = "#E7F9A9";
     })
 }
-
-
-

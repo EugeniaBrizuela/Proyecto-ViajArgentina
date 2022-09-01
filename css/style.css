@@ -133,6 +133,21 @@ h2{
     margin-bottom: 5px;
 }
 
+.main__button3{
+    background-color: #deff6780;
+    border-color:#7C6A0A;
+    border-style: solid;
+    border-width: 2px;
+    padding: 6px; 
+    font-size: 25px;
+    font-family: 'Poiret One', cursive;
+    color: #5A5A5A;
+    text-align: center;
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-bottom: 100px;
+}
+
 .button{
     display: flex;
     flex-direction: row;

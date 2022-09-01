@@ -24,7 +24,7 @@ class Paquete {
      */
 
     descripcionPaquete(){
-        alert("Descripción del paquete:\n\n" + "Localidad: " + this.localidad + "\nTemporada: " + this.temporada + "\nEstadía: " + this.estadia + "\nViaje: " + this.viaje + "\nActividad: " + this.actividad);
+        return ("Descripción del paquete:\n\n" + "Localidad: " + this.localidad + "\nTemporada: " + this.temporada + "\nEstadía: " + this.estadia + "\nViaje: " + this.viaje + "\nActividad: " + this.actividad);
     }
     /**
      * 

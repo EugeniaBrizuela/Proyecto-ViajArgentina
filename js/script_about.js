@@ -67,8 +67,17 @@ btn_hobbie.textContent = "Hobbie";
 
 //Agrego evento y que muestre alert con hobbie
 btn_hobbie.addEventListener("click", ()=>{
-    alert(fundadora_spread.hobbie);
+
+    Swal.fire({
+        title: "Hobbie de la fundadora: Pintura",
+        text: "Obra de pintura",
+        imageUrl: "../img/pintura.jpg",
+        imageWidth: 300,
+        imageHeigth: 300,
+    })
+    /* alert(fundadora_spread.hobbie); */
 })
+
 
 
 

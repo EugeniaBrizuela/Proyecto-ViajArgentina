@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIAJARGENTINA | App para viajeros</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -39,7 +40,7 @@
         <form id="formingreso">
             <input class="main__button" type="text" name="usuario" id="usuario" placeholder="Ingrese su usuario">
             <input class="main__button" type="password" name="contraseña" id="contraseña" placeholder="Ingrese su contraseña">
-            <button class="main__button" type="submit" value="ingreso" id="btn_ingreso">Ingresar</button>
+            <button class="main__button" type="submit" id="btn_ingreso">Ingresar</button>
         </form>
     </section>
     <section id="registro">
@@ -52,7 +53,7 @@
             <input class="main__button" type="text" name="nombre" id="nuevo_nombre" placeholder="Ingrese su nombre">
             <input class="main__button" type="text" name="apellido" id="nuevo_apellido" placeholder="Ingrese su apellido">
             <input class="main__button" type="password" name="contraseña" id="nueva_contraseña" placeholder="Ingrese una contraseña">
-            <button class="main__button" type="button" id="btn_registro">Registrarse</button>
+            <button class="main__button" type="submit" id="btn_registro">Registrarse</button>
         </form>
     </section>
 <!--INICIO DE FOOTER-->
@@ -66,6 +67,7 @@
     <h3>©Copyright - Todos los derechos reservados</h3>
 </footer>
 <!-- <script src="../js/clase_paquetes.js"></script> -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../js/script_index.js"></script>
 <script src="../js/clase_usuario.js"></script>
 <script src="../js/script_suscribe.js"></script>

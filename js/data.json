@@ -1,0 +1,141 @@
+{ 
+    "paquete": [
+        {
+            "id": 1,
+            "localidad": "BARILOCHE",
+            "provincia": "Río Negro",
+            "estadia": "Los Nonos",
+            "precioEstadia": 13000,
+            "viaje": "Avión (Buenos Aires-Bariloche)",
+            "precioViaje": 20000,
+            "temporada": "INVIERNO",
+            "interes": "NATURALEZA",
+            "actividad": "Esquí en Cerro Catedral",
+            "precioActividad": 8000,
+            "tarjeta": true,
+            "precioTotal": 41000,
+            "image": "../img/bariloche_natu_inv.jpg"
+
+        },
+        {
+            "id": 2,
+            "localidad": "BARILOCHE",
+            "provincia": "Río Negro",
+            "estadia": "Huemul",
+            "precioEstadia": 20000,
+            "viaje": "Avión (Buenos Aires-Bariloche)",
+            "precioViaje": 20000,
+            "temporada": "INVIERNO",
+            "interes": "CIUDAD",
+            "actividad": "Complejo de spa Caviahue",
+            "precioActividad": 10000,
+            "tarjeta": false,
+            "precioTotal": 50000,
+            "image": "../img/bariloche_ciudad_inv.jpg"
+
+        },
+        {
+            "id": 3,
+            "localidad": "BARILOCHE",
+            "provincia": "Río Negro",
+            "estadia": "Cabañas Alma",
+            "precioEstadia": 15000,
+            "viaje": "Avión (Buenos Aires-Bariloche)",
+            "precioViaje": 20000,
+            "temporada": "VERANO",
+            "interes": "NATURALEZA",
+            "actividad": "Paseo en barco y actividad en bicicleta",
+            "precioActividad": 12000,
+            "tarjeta": true,
+            "precioTotal": 47000,
+            "image": "../img/bariloche_natu_verano.jpg"
+
+        },
+        {
+            "id": 4,
+            "localidad": "BARILOCHE",
+            "provincia": "Río Negro",
+            "estadia": "Huemul",
+            "precioEstadia": 20000,
+            "viaje": "Avión (Buenos Aires-Bariloche)",
+            "precioViaje": 20000,
+            "temporada": "VERANO",
+            "interes": "CIUDAD",
+            "actividad": "Complejo de verano Patagonia Splash",
+            "precioActividad": 15000,
+            "tarjeta": true,
+            "precioTotal": 55000,
+            "image": "../img/bariloche_ciudad_verano.jpg"
+
+        },
+        {
+            "id": 5,
+            "localidad": "EL BOLSON",
+            "provincia": "Neuquén",
+            "estadia": "El Noble",
+            "precioEstadia": 8000,
+            "viaje": "Avión (Buenos Aires-Neuquén)-Omnibus (Neuquén-El Bolsón",
+            "precioViaje": 18000,
+            "temporada": "INVIERNO",
+            "interes": "NATURALEZA",
+            "actividad": "Snowboard y culipatín",
+            "precioActividad": 4000,
+            "tarjeta": false,
+            "precioTotal": 30000,
+            "image": "../img/bolson_natu_inv.jpg"
+            
+        },
+        {
+            "id": 6,
+            "localidad": "EL BOLSON",
+            "provincia": "Neuquén",
+            "estadia": "El Noble",
+            "precioEstadia": 8000,
+            "viaje": "Avión (Buenos Aires-Neuquén)-Alquiler auto(Neuquén-El Bolsón)",
+            "precioViaje": 20000,
+            "temporada": "INVIERNO",
+            "interes": "CIUDAD",
+            "actividad": "Complejo de relajación La Esperanza",
+            "precioActividad": 8000,
+            "tarjeta": false,
+            "precioTotal": 36000,
+            "image": "../img/bolson_ciu_inv.jpg"
+            
+        },
+        {
+            "id": 7,
+            "localidad": "EL BOLSON",
+            "provincia": "Neuquén",
+            "estadia": "Camping La Huella",
+            "precioEstadia": 5000,
+            "viaje": "Avión (Buenos Aires-Neuquén)-Omnibus(Neuquén-El Bolsón)",
+            "precioViaje": 18000,
+            "temporada": "VERANO",
+            "interes": "NATURALEZA",
+            "actividad": "Camino al refugio Cajón del Azul",
+            "precioActividad": 5000,
+            "tarjeta": false,
+            "precioTotal": 23500,
+            "image": "../img/bolson_natu_ver.jpg"
+            
+        },
+        {
+            "id": 8,
+            "localidad": "EL BOLSON",
+            "provincia": "Neuquén",
+            "estadia": "Hotel La Montañita",
+            "precioEstadia": 14000,
+            "viaje": "Avión (Buenos Aires-Neuquén)-Omnibus(Neuquén-El Bolsón)",
+            "precioViaje": 18000,
+            "temporada": "VERANO",
+            "interes": "CIUDAD",
+            "actividad": "Tour por la ciudad",
+            "precioActividad": 8000,
+            "tarjeta": false,
+            "precioTotal": 40000,
+            "image": "../img/bolson_ciu_ver.jpg"
+            
+        }
+
+    ]
+}
