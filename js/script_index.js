@@ -150,9 +150,9 @@ function validar_datos(){
     
     avisosValidacion.innerHTML = "";
     
-    let inputLocalidad = document.getElementById ("localidad").value;
-    let inputInteres = document.getElementById("interes").value;
-    let inputTemporada = document.getElementById("temporada").value;
+    let inputLocalidad = document.getElementById ("localidad").value.toUpperCase();
+    let inputInteres = document.getElementById("interes").value.toUpperCase();
+    let inputTemporada = document.getElementById("temporada").value.toUpperCase();
     
     let arreglo_msj = new Array();
 
@@ -183,21 +183,13 @@ function validar_datos(){
         .then(response => response.json())
         .then((data) =>{
             console.log(data);
-            const resultado1 = data.filter((prop)=> {
-                return (prop.localidad == inputLocalidad && prop.temporada == inputTemporada && prop.interes == inputInteres);
-            });
+            const resultado1 = data.paquete.filter((prop)=> 
+                prop.localidad == inputLocalidad && prop.temporada == inputTemporada && prop.interes == inputInteres);
     
             resultado1 ? resultado1.forEach ((paquete) => crear_caja_paquete(paquete)) : alert("No se encuentran coincidencias");
     
             btn_buscar.remove(); 
         
-        /* const resultado = arreglo_paquete.filter((prop)=> {
-            return (prop.localidad == inputLocalidad && prop.temporada == inputTemporada && prop.interes == inputInteres);
-        });
-        
-        resultado ? resultado.forEach ((paquete) => crear_caja_paquete(paquete)) : alert("No se encuentran coincidencias");
-        
-        btn_buscar.remove(); */
         })
     }
     
@@ -261,20 +253,17 @@ function ver_paquete(){
     }).then((result) => {
     /* Read more about handling dismissals below */
     if (result.dismiss === Swal.DismissReason.timer) {
-        console.log('I was closed by the timer')
+        console.log('')
     }
     })
 
-    for (let paquete of arreglo_paquete){
-        crear_caja_paquete(paquete)
-    }
-/* 
-    for (let i = 0; i < arreglo_paquete.length; i++){
-        
-        let objeto_paquete = arreglo_paquete [i];
-        crear_caja_paquete(objeto_paquete);
-        
-    } */
+    fetch(url)
+      .then ((response)=> response.json())
+      .then((data)=>{
+        console.log(data);
+        data.paquete.forEach((paquete) => crear_caja_paquete(paquete))
+      });
+
     return true;
 }
 
@@ -293,14 +282,14 @@ function crear_caja_paquete (paquete){
     tittle.style.marginTop = "10px";
 
     let descripcion = document.createElement ("p");
-    descripcion.textContent = paquete.descripcionPaquete();
+    descripcion.textContent = "Descripción del paquete: \n\n" + "Localidad: " + paquete.localidad + "\nTemporada: " + paquete.temporada + "\nEstadía: " + paquete.estadia + "\nViaje: " + paquete.viaje + "\nActividad: " + paquete.actividad;
     descripcion.style.fontSize = "22px";
     descripcion.style.margin = "25px";
     descripcion.style.color = "#5A5A5A";
     descripcion.style.textAlign = "center";
     
     let precio = document.createElement ("p");
-    precio.textContent = paquete.precioPaquete();
+    precio.textContent = "Descripción del presupuesto: \n\n" + "Presupuesto: \n-Estadía: $" + paquete.precioEstadia + "\n-Viaje: $" + paquete.precioViaje + "\n-Actividad: $" + paquete.precioActividad + "\nTOTAL (x persona x día)= $" + (paquete.precioEstadia + paquete.precioViaje + paquete.precioActividad);
     precio.style.fontSize = "22px";
     precio.style.margin = "25px";
     precio.style.color = "#5A5A5A";

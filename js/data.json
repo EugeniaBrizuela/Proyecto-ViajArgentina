@@ -12,7 +12,6 @@
             "interes": "NATURALEZA",
             "actividad": "Esquí en Cerro Catedral",
             "precioActividad": 8000,
-            "tarjeta": true,
             "precioTotal": 41000,
             "image": "../img/bariloche_natu_inv.jpg"
 
@@ -29,7 +28,6 @@
             "interes": "CIUDAD",
             "actividad": "Complejo de spa Caviahue",
             "precioActividad": 10000,
-            "tarjeta": false,
             "precioTotal": 50000,
             "image": "../img/bariloche_ciudad_inv.jpg"
 
@@ -46,7 +44,6 @@
             "interes": "NATURALEZA",
             "actividad": "Paseo en barco y actividad en bicicleta",
             "precioActividad": 12000,
-            "tarjeta": true,
             "precioTotal": 47000,
             "image": "../img/bariloche_natu_verano.jpg"
 
@@ -63,7 +60,6 @@
             "interes": "CIUDAD",
             "actividad": "Complejo de verano Patagonia Splash",
             "precioActividad": 15000,
-            "tarjeta": true,
             "precioTotal": 55000,
             "image": "../img/bariloche_ciudad_verano.jpg"
 
@@ -80,7 +76,6 @@
             "interes": "NATURALEZA",
             "actividad": "Snowboard y culipatín",
             "precioActividad": 4000,
-            "tarjeta": false,
             "precioTotal": 30000,
             "image": "../img/bolson_natu_inv.jpg"
             
@@ -97,7 +92,6 @@
             "interes": "CIUDAD",
             "actividad": "Complejo de relajación La Esperanza",
             "precioActividad": 8000,
-            "tarjeta": false,
             "precioTotal": 36000,
             "image": "../img/bolson_ciu_inv.jpg"
             
@@ -114,7 +108,6 @@
             "interes": "NATURALEZA",
             "actividad": "Camino al refugio Cajón del Azul",
             "precioActividad": 5000,
-            "tarjeta": false,
             "precioTotal": 23500,
             "image": "../img/bolson_natu_ver.jpg"
             
@@ -131,7 +124,6 @@
             "interes": "CIUDAD",
             "actividad": "Tour por la ciudad",
             "precioActividad": 8000,
-            "tarjeta": false,
             "precioTotal": 40000,
             "image": "../img/bolson_ciu_ver.jpg"
             

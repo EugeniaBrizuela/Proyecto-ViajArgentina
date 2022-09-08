@@ -4,10 +4,10 @@
 class Usuario {
     /**
      * 
-     * @param {*} usuario 
-     * @param {*} nombre 
-     * @param {*} apellido 
-     * @param {*} contraseña 
+     * @param {*} usuario - Usuario
+     * @param {*} nombre - Nombre del usuario
+     * @param {*} apellido - Apellido del usuario
+     * @param {*} contraseña - Contraseña del usuario
      */
     constructor (usuario, nombre, apellido, contraseña){
         this.usuario = usuario;
@@ -26,7 +26,7 @@ class Usuario {
     }
 }
 /**
- * Se arma un arreglo de los datos de los usuarios
+ * Se arma un arreglo de los datos con un solo usuario
  */
 const array_usuario = [];
 
