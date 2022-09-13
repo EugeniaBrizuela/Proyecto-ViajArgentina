@@ -1,4 +1,3 @@
-
 //BOTONES PARA INGRESAR Y REGISTRARSE
 //Llamo a botones y cambio el color de fondo
 let btn_ingresar = document.getElementById("btn_ingresar");

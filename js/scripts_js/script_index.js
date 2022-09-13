@@ -59,7 +59,7 @@ Toastify({
     duration: 3000,
     gravity: "bottom",
     position: "left",
-    destination: "./pages/suscribite.html",
+    destination: "../pages/suscribite.html",
   }).showToast();
 
 Toastify({
@@ -69,7 +69,7 @@ Toastify({
     duration: 3000,
     gravity: "bottom",
     position: "right",
-    destination: "./pages/suscribite.html",
+    destination: "../pages/suscribite.html",
     }).showToast();
 
 
