@@ -329,7 +329,7 @@ function crear_caja_paquete (paquete){
     precio.style.textAlign = "center";
     
     let img = document.createElement ("img");
-    img.setAttribute("src",paquete.image);
+    img.setAttribute("src", paquete.image);
     img.style.width = "40%";
     img.style.marginLeft = "450px"; 
     img.style.borderColor = "#7C6A0A";
