@@ -5,7 +5,7 @@ let home = document.getElementById("home");
 let inputWelcome = document.getElementById ("inputWelcome");
 
 //Url de data.json para usar API-Fetch
-const url = "../js/data/data_paquetes.json"; 
+const url = "./js/data/data_paquetes.json"; 
 
 //Cambio los estilos de caja del input
 inputWelcome.style.backgroundColor = "#deff6779";
