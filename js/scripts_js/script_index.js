@@ -4,9 +4,8 @@
 let home = document.getElementById("home");
 let inputWelcome = document.getElementById ("inputWelcome");
 
-
 //Url de data.json para usar API-Fetch
-const url = "./js/data.json"; 
+const url = "../js/data/data_paquetes.json"; 
 
 //Cambio los estilos de caja del input
 inputWelcome.style.backgroundColor = "#deff6779";
@@ -53,7 +52,6 @@ inputWelcome.addEventListener("keyup", event => {
 });
 
 //Se colocan mensajes con toastify de ingresar y registrar
-
 Toastify({
     text: "Ingresar",
     className: "main__button3",
@@ -81,7 +79,13 @@ function mostrar_mensaje (){
         agrego_nombre(inputWelcome.value);
         inputWelcome.value = "";
     }else{
-        alert ("No ingresaste nada")
+        Swal.fire({
+            position: 'top-right',
+            icon: 'error',
+            title: 'No ingresaste nada',
+            showConfirmButton: false,
+            timer: 2000
+            });
     }
 }
 
@@ -139,9 +143,9 @@ btn_buscar.addEventListener("click", ()=>{
     }).then((result) => {
     /* Read more about handling dismissals below */
     if (result.dismiss === Swal.DismissReason.timer) {
-        console.log('I was closed by the timer')
+        console.log('')
     }
-    })
+    });
 
 })
 
@@ -156,56 +160,67 @@ function validar_datos(){
     
     let arreglo_msj = new Array();
 
-    inputLocalidad == "" && arreglo_msj.push("La localidad ingresada no es correcta, debe ingresar la opción entre BARILOCHE o EL BOLSON");
+    inputLocalidad == "" && arreglo_msj.push("La localidad ingresada no es correcta, debe ingresar la opción entre Bariloche o El Bolson");
 
-    inputInteres == "" && arreglo_msj.push("El interés ingresado no es correcto, debe ingresar NATURALEZA o CIUDAD");
+    inputInteres == "" && arreglo_msj.push("El interés ingresado no es correcto, debe ingresar naturaleza o ciudad");
 
-    inputTemporada == "" && arreglo_msj.push("La temporada no coincide con lo que debe ser ingresado, debe ingresarse VERANO o INVIERNO");
+    inputTemporada == "" && arreglo_msj.push("La temporada no coincide con lo que debe ser ingresado, debe ingresarse verano o invierno");
     
-    if (arreglo_msj.length > 0){
-        
-        let listaAvisos = document.createElement("div");
-        listaAvisos.textContent = "Los siguientes puntos deben corregirse: ";
-        listaAvisos.style.fontSize = "20px";
-        listaAvisos.style.textAlign = "center";
-        listaAvisos.style.color = "#404040";
-        
-        arreglo_msj.forEach((mensaje) =>{
-            listaAvisos.appendChild(crear_lista(mensaje));
-        })
-        
-        avisosValidacion.appendChild(listaAvisos);
-        
-        
-    }else{
+    setTimeout(() => {
+        if (arreglo_msj.length > 0){
+            
+            let listaAvisos = document.createElement("div");
+            listaAvisos.textContent = "Los siguientes puntos deben corregirse: ";
+            listaAvisos.style.fontSize = "20px";
+            listaAvisos.style.textAlign = "center";
+            listaAvisos.style.color = "#404040";
+            
+            arreglo_msj.forEach((mensaje) =>{
+                listaAvisos.appendChild(crear_lista(mensaje));
+            })
+            
+            avisosValidacion.appendChild(listaAvisos);   
+            
+        }else{
 
-        fetch(url)
-        .then(response => response.json())
-        .then((data) =>{
-            console.log(data);
-            const resultado1 = data.paquete.filter((prop)=> 
-                prop.localidad == inputLocalidad && prop.temporada == inputTemporada && prop.interes == inputInteres);
-    
-            resultado1 ? resultado1.forEach ((paquete) => crear_caja_paquete(paquete)) : alert("No se encuentran coincidencias");
-    
-            btn_buscar.remove(); 
+            //Se llama a API local con fetch
+            fetch(url)
+            .then(response => response.json())
+            .then((data) =>{
+                console.log(data);
+                const resultado1 = data.paquete.filter((prop)=> 
+                    prop.localidad == inputLocalidad && prop.temporada == inputTemporada && prop.interes == inputInteres);
         
-        })
-    }
-    
+                resultado1 ? resultado1.forEach ((paquete) => crear_caja_paquete(paquete)) : alert("No se encuentran coincidencias");
+        
+            });
+            btn_buscar.remove();
 
-    
+            //Se agrega asincronía
+            setInterval(()=>{
+                Toastify({
+                    text: "Si te gustó el paquete y querés más información, clickea acá",
+                    className: "main__button3",
+                    backgroundColor: "#7C6A0A",
+                    duration: 6000,
+                    gravity: "top",
+                    position: "right",
+                    destination: "https://www.facebook.com/",
+                }).showToast();   
 
+            },5000);
+        }
+        
+    }, 2000);
+
+    //Resetean los valores de inputs
     inputLocalidad.value = "";
     inputInteres.value = "";
     inputTemporada.value = "";
 
 
     return arreglo_msj.lenght == 0;
-    
 }
-
-
 
 //Función para crear la lista de errores
 function crear_lista(mensaje){
@@ -251,25 +266,43 @@ function ver_paquete(){
         clearInterval(timerInterval)
     }
     }).then((result) => {
-    /* Read more about handling dismissals below */
+    
     if (result.dismiss === Swal.DismissReason.timer) {
         console.log('')
     }
     })
+    
+    //Se agrega API local con fetch - Se usa asincronía
+    setTimeout(()=>{
+        fetch(url)
+          .then ((response)=> response.json())
+          .then((data)=>{
+            console.log(data);
+            data.paquete.forEach((paquete) => crear_caja_paquete(paquete))
+          });
+    
+        setInterval(()=>{
+            Toastify({
+                text: "Si querés más información, clickea acá",
+                className: "main__button3",
+                backgroundColor: "#7C6A0A",
+                duration: 6000,
+                gravity: "top",
+                position: "left",
+                destination: "https://www.facebook.com/",
+            }).showToast();   
+    
+        },5000);
 
-    fetch(url)
-      .then ((response)=> response.json())
-      .then((data)=>{
-        console.log(data);
-        data.paquete.forEach((paquete) => crear_caja_paquete(paquete))
-      });
+    },2000);
 
     return true;
 }
 
 //Función para crear las cajas de los paquetes
 function crear_caja_paquete (paquete){
-    
+
+    //Se crean nuevos elementos con DOM
     let ctn = document.createElement ("div");
     ctn.style.margin = "15px";
     ctn.style.borderStyle = "solid";
@@ -308,7 +341,8 @@ function crear_caja_paquete (paquete){
     ctn.appendChild(precio);
     ctn.appendChild(img);
     contenedor.appendChild(ctn);
-
+    
+    //Se agrega evento de mouse 
     ctn.addEventListener("mouseover", ()=>{
         ctn.style.backgroundColor = "#deff6779";
     });

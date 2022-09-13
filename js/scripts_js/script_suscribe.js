@@ -27,7 +27,6 @@ registro.style.borderStyle = "solid";
 registro.style.borderColor= "#7C6A0A";
 registro.style.borderWidth = "2px";
 
-
 //INGRESO
 //Agrego evento de click y funcionalidad
 let btn_ingreso = document.getElementById("btn_ingreso");
@@ -35,14 +34,9 @@ let btn_registro = document.getElementById("btn_registro");
 let avisosValidacion2 = document.getElementById("avisosValidacion2");
 
 formIngreso.addEventListener("submit", (e)=>{
+    e.preventDefault();
     buscar_usuario();
 })
-/* btn_ingreso.addEventListener("click", ()=>{
-
-    buscar_usuario();
-    
-
-}) */
 
 //REGISTRO
 //Agrego evento de click y funcionalidad en formulario de registro
@@ -50,11 +44,6 @@ formRegistro.addEventListener("submit", (e)=>{
     e.preventDefault();
     validar_datos2();
 })
-/* btn_registro.addEventListener("click", ()=>{
-   
-    validar_datos2();
-
-}) */
 
 // Función para buscar al usuario ingresado en formularios
 function buscar_usuario (){
@@ -62,68 +51,56 @@ function buscar_usuario (){
     let inputUsuario = document.getElementById("usuario").value;
     let inputContraseña = document.getElementById("contraseña").value;
 
-    // Corroboro que esté vacío el array
-/*     !localStorage.getItem("array_usuario") && false; */
-
     // Parseo los valores del array para trabajar con los objetos
     let usuario_almacenado = JSON.parse(localStorage.getItem("array_usuario"));
-/*     
-    let usuariosEncontrados = false;
-    
-    let i = 0;
-    // Genero un bucle para obtener el dato de usuariosEncontrados 
-    while ((!usuariosEncontrados) && (i != usuario_almacenado.length)){
 
-        if (usuario_almacenado[i].usuario === inputUsuario ){
-
-            usuariosEncontrados = usuario_almacenado[i];
-        }
-
-        i++
-    }
- */
     const resultado_busqueda = array_usuario.find((usuario)=> usuario.usuario == inputUsuario && usuario.contraseña == inputContraseña);
-    if (resultado_busqueda != undefined && usuario_almacenado != ""){
-        let msj1 = document.getElementById("msjError1");
-        msj1.textContent = "Bienvenido/a " + inputUsuario + "!!";
-        msj1.style.fontSize = "30px";
-        msj1.style.color = "#404040";
-        msj1.style.textAlign = "center";
-    }else{
-        let msj2 = document.getElementById("msjError2");
-        msj2.textContent = "El usuario no existe o debe ingresar correctamente la contraseña";
-        msj2.style.fontSize = "30px";
-        msj2.style.color = "#404040";
-        msj2.style.textAlign = "center";
-    }
     
+    //Se utilizan librerías y asincronía
+    if (resultado_busqueda != undefined && usuario_almacenado != ""){
+        
+        Swal.fire({
+            position: 'top-right',
+            icon: 'success',
+            title: 'Bienvenido/a ' + inputUsuario + "!!",
+            showConfirmButton: false,
+            timer: 2000
+            });
+        
+        setTimeout(()=>{
+            let msj1 = document.getElementById("msjError1");
+            msj1.textContent = "Bienvenido/a " + inputUsuario + "!!";
+            msj1.style.fontSize = "30px";
+            msj1.style.color = "#404040";
+            msj1.style.textAlign = "center";
+           
+        },2000);
+        
+    }else{
+
+        Swal.fire({
+            position: 'top-right',
+            icon: 'error',
+            title: 'El usuario no existe o debe ingresar correctamente la contraseña',
+            showConfirmButton: false,
+            timer: 2000
+            });
+        
+        setTimeout(()=>{
+            let msj2 = document.getElementById("msjError2");
+            msj2.textContent = "El usuario no existe o debe ingresar correctamente la contraseña";
+            msj2.style.fontSize = "30px";
+            msj2.style.color = "#404040";
+            msj2.style.textAlign = "center";
+        },2000);
+    }
+
     //Reseteo los input
     inputUsuario.value = "";
     inputContraseña.value = "";
 
     return resultado_busqueda
-/* 
-    //Segun el valor obtenido muestro uno u otro mensaje si esta regustrado o no el usuario
-    if (usuariosEncontrados != false){
-        let msj1 = document.getElementById("msjError1");
-        msj1.textContent = "Bienvenido/a " + inputUsuario + "!!";
-        msj1.style.fontSize = "30px";
-        msj1.style.color = "#404040";
-        msj1.style.textAlign = "center";
-
-
-    }else{
-        let msj2 = document.getElementById("msjError2");
-        msj2.textContent = "El usuario no existe";
-        msj2.style.fontSize = "30px";
-        msj2.style.color = "#404040";
-        msj2.style.textAlign = "center";
-    }
-
-    return usuariosEncontrados; */
-
 }
-
 
 // Función para validar los datos ingresados en el formulario de registro
 function validar_datos2 (){
@@ -138,13 +115,7 @@ function validar_datos2 (){
 
     if ((inputNuevoUsuario != "") && (inputNuevoNombre != "") && (inputNuevoApellido != "") && (inputNuevaContraseña != "")){
 
-        /* let dato_usuario =  */buscar_usuario();
-
-        // Se ve si esta ya registrado o no
-/*         if (dato_usuario != false){
-
-            msj = "El usuario ingresado ya existe"
-        } */
+       buscar_usuario();
 
     }else {
 
@@ -155,7 +126,7 @@ function validar_datos2 (){
             icon: 'error',
             title: 'Los datos ingresados son erroneos, se deben ingresar todos los datos',
             showConfirmButton: false,
-            timer: 5000
+            timer: 2000
           });
     
     }
@@ -171,8 +142,6 @@ function validar_datos2 (){
         msj_exitoso.style.fontSize = "30px";
         msj_exitoso.style.color = "#404040";
         msj_exitoso.style.textAlign= "center";
-
-
                 
         const Toast = Swal.mixin({
             toast: true,
@@ -195,13 +164,11 @@ function validar_datos2 (){
         msj2.remove();
         
     }else{
-
         let msj_no_exitoso = document.getElementById("msjError4");
         msj_no_exitoso.textContent = msj;
         msj_no_exitoso.style.fontSize = "30px";
         msj_no_exitoso.style.color = "#404040";
         msj_no_exitoso.style.textAlign= "center";
-        
     }
     
     //Reseteo los valores de los input
@@ -212,7 +179,6 @@ function validar_datos2 (){
 
     return msj;
 
-    
 } 
 
 // Función para guardar a un nuevo usuario en el LocalStorage

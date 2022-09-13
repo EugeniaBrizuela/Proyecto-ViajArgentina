@@ -1,0 +1,53 @@
+{
+
+    "integrantes" :[
+        {
+            "id": 1,
+            "nombre": "Marta",
+            "apellido": "Perez",
+            "image" : "../img/img_marta.jpg",
+            "datos_integrante": {
+                "profesion" : "Topógrafa",
+                "edad" : 42,
+                "telefono" : 2994586565,
+                "email" : "marta_perez@gmail.com"
+            }
+        },
+        {
+            "id": 2,
+            "nombre": "José",
+            "apellido": "Domingo",
+            "image" : "../img/img_jose.jpg",
+            "datos_integrante": {
+                "profesion" : "Ingeniero Industrial",
+                "edad" : 48,
+                "telefono" : 297363636,
+                "email" : "d.jose@gmail.com"
+            } 
+        },
+        {
+            "id": 3,
+            "nombre": "Agustina",
+            "apellido": "Martinez",
+            "image" : "../img/img_agustina.jpg",
+            "datos_integrante": {
+                "profesion" : "Profesora de Educación Física",
+                "edad" : 34,
+                "telefono" : 299363636,
+                "email" : "agustina_martinez4@gmail.com"
+            } 
+        },
+        {
+            "id": 4,
+            "nombre": "Marcos",
+            "apellido": "Escalante",
+            "image" : "../img/img_marcos.jpg",
+            "datos_integrante": {
+                "profesion" : "Filósofo",
+                "edad" : 36,
+                "telefono" : 298656768,
+                "email" : "m.marcos_escalante@gmail.com"
+            } 
+        }
+    ]
+}

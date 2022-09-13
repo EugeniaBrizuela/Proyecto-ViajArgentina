@@ -34,6 +34,12 @@ body{
     height: 740px;
 }
 
+.main__background__about{
+    background-image: url(../img/imagenfondo_about.jpg);
+    width: 100%;
+    height: 740px;
+    background-size: cover;
+}
 .main__header{
     display: flex;
     flex-direction: row;
@@ -83,6 +89,8 @@ ul{
     transition: all .3s ease-in;
 }
 
+/* ESTILOS DE PÁGINA */
+/* Estilos de texto */
 h1{
     font-size: 120px;
     color: #5A5A5A;
@@ -97,7 +105,7 @@ h2{
     text-align: center;
 }
 
-
+/*Estilo de flecha*/
 .downarrow{
     color: #5A5A5A;
     background-color:#deff6779 ;
@@ -117,6 +125,7 @@ h2{
     box-shadow: 0px 0px 10px #413807;
 }
 
+/*Estilo de botones*/
 .main__button{
     background-color: #deff6780;
     border-color:#7C6A0A;
@@ -148,6 +157,20 @@ h2{
     margin-bottom: 100px;
 }
 
+.main__button4{
+    background-color: #deff6780;
+    border-color:#7C6A0A;
+    border-style: solid;
+    border-width: 2px;
+    padding: 6px; 
+    font-size: 25px;
+    font-family: 'Poiret One', cursive;
+    color:#E7F9A9 ;
+    text-align: center;
+    margin-top: 23px;
+
+}
+
 .button{
     display: flex;
     flex-direction: row;
@@ -171,7 +194,7 @@ h2{
     box-shadow:#E7F9A9 ;
 }
 
-
+/* FOOTER */
 footer{
     background-color: #7C6A0A;
     color: #E7F9A9;
